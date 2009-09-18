@@ -3,11 +3,11 @@
 // index.php
 
 require_once("header.php");
+printHeader("Title", "Keywords", "Description");
 
 ?>
 
-
-Bloop.
+Bloop.<?php echo($page_title); ?>
 
 <?php
 

@@ -2,12 +2,6 @@
 
 // header.php
 
-// Set page information
-if (!isset($page_title)) { $page_title = "Default title"; }
-if (!isset($page_description)) { $page_description = "Default description"; }
-if (!isset($page_keywords)) { $page_keywords = "Default keywords"; }
-
-
 // Assign global variables based on the user session
 // Most values will remain empty unless the user is logged in
 
@@ -29,7 +23,11 @@ if (isset($_SESSION['user']))
 	$user_zipcode = $_SESSION['user']['zipcode'];
 }
 
-?>
+
+function printHeader($page_title, $page_description, $page_keywords)
+{
+	?>
+	
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -43,7 +41,6 @@ if (isset($_SESSION['user']))
 
 <body>
 
-
 <div class="container">
 		
 		<div class="header">
@@ -51,17 +48,23 @@ if (isset($_SESSION['user']))
 			<h1>Govit <span class="version">alpha</span></h1>
 			
 			<ul class="nav">
-				<li><a href="#">Link 1</a></li>
-				<li><a href="#">Link 2</a></li>
-				<li><a href="#">Link 3</a></li>
-				<li><a href="#">Link 4</a></li>
-				<li><a href="#">Link 5</a></li>
-				<li><a href="#">Link 6</a></li>
+				<li><a href="#">Home</a></li>
+				<li><a href="#">All Posts</a></li>
+				<li><a href="#">Make New Post</a></li>
+				<li><a href="#">Join</a></li>
+				<li><a href="#">Login</a></li>
+				<li><a href="#">Feedback</a></li>
 			</ul>
 		
 		</div><!-- /.header -->
 		
 		<div class="content">
+	
+	<?php
+}
+
+?>
+
 		
 	
 	
