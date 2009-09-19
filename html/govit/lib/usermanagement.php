@@ -10,7 +10,7 @@ function add_user($email, $password, $firstname, $lastname, $canpost) {
     $lastname = mysql_real_escape_string($lastname);
     $dbcon = db_connect();
     $canpost_entry = bool_to_int($canpost);
-    $valkey = gen_validation_key($id);
+    $valkey = gen_validation_key($email);
     $sql = "INSERT INTO users (email, password, validated, validationkey, joindate, firstname, lastname, canpost)
 VALUES ('$email', PASSWORD('$password'), 0, '$valkey', CURDATE(), '$firstname', '$lastname', $canpost_entry)";
     $success = mysql_query($sql);
@@ -19,7 +19,7 @@ VALUES ('$email', PASSWORD('$password'), 0, '$valkey', CURDATE(), '$firstname', 
 }
 
 function email_in_use($email) {
-    return user_id($email)==-1;
+    return user_id($email)!=-1;
 }
 
 function user_id($email) {
@@ -38,13 +38,17 @@ function user_id($email) {
 
 function get_user_row($id){
     $result=mysql_query("SELECT * FROM users WHERE id=$id)");
-    return mysql_fetch_array($result);
+    if($result){
+	return mysql_fetch_array($result);
+    }else{
+	return null;
+    }
 }
 
 function get_user_col($id, $col){
     $result = mysql_query("SELECT $col FROM users WHERE id=$id)");
-    $row = mysql_fetch_array($result);
-    if($row){
+    if($result){
+	$row = mysql_fetch_array($result);
 	return $row[$col];
     }else{
 	return null;
@@ -67,8 +71,8 @@ function validate_user($id, $validationkey) {
 
 
 
-function gen_validation_key($id) {
-    return substr(md5(time().$id), 0, 10);
+function gen_validation_key($email) {
+    return substr(md5(time().$email), 0, 10);
 }
 
 function get_validation_key($id) {
