@@ -42,10 +42,14 @@ function user_id($email) {
 }
 
 function get_user_row($id){
+    $con = db_connect();
     $result=mysql_query("SELECT * FROM users WHERE id=$id)");
     if(mysql_num_rows($result)>0){
-	return mysql_fetch_array($result);
+	$row = mysql_fetch_array($result);
+	db_close($con);
+	return $row;
     }else{
+	db_close($con);
 	return null;
     }
 }
