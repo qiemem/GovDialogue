@@ -51,12 +51,12 @@ function printHeader($page_title, $page_description, $page_keywords)
 			<h1><a href="/govit/">Govit</a> <span class="version">alpha</span></h1>
 			
 			<ul class="nav">
-				<li><a href="#">Home</a></li>
-				<li><a href="#">All Posts</a></li>
-				<li><a href="#">Make New Post</a></li>
-				<li><a href="#">Join</a></li>
-				<li><a href="#">Login</a></li>
-				<li><a href="#">Feedback</a></li>
+				<li><a href="/govit/">Home</a></li>
+				<li><a href="/allposts.php">All Posts</a></li>
+				<li><a href="/newpost.php">Make New Post</a></li>
+				<li><a href="/join.php">Join</a></li>
+				<li><a href="/login.php">Login</a></li>
+				<li><a href="/feedback.php">Feedback</a></li>
 			</ul>
 		
 		</div><!-- /.header -->
