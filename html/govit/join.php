@@ -2,10 +2,9 @@
 
 // join.php
 
-ini_set('display_errors',1);
 error_reporting(E_ALL);
-require_once("lib/usermanagement.php");
 
+require_once("lib/usermanagement.php");
 
 require_once("header.php");
 printHeader("Join", "Keywords", "Description");
@@ -104,7 +103,7 @@ else
 				
 				
 				// User successfully created!
-				$emailMessage = "Hi $_POST['firstname'],
+				$emailMessage = "Hi " . $_POST['firstname'] . ",
 				
 Welcome to Govit. Validate your account here: http://dev.morninj.com/govit/validate.php?v=$validation_key
 
@@ -113,7 +112,7 @@ Govit
 ";
 
 				// Send email confirmation
-				if(mail($_POST['email'], "Welcome message subject", $emailMessage, "From: Email address <serveradmin@morninj.com>"))
+				if(mail($_POST['email'], "Welcome message subject", $emailMessage, "From: Email address <serveradmin@dev.morninj.com>"))
 				{
 					?>
 					
@@ -121,7 +120,7 @@ Govit
 					
 					<?php
 					
-					mail("joey@morninj.com", "New user", "New user: $_POST[fullname] ($_POST[email])", "From: serveradmin@domain.com"); 
+					mail("joey@morninj.com", "New user", "New user: $_POST[firstname] $_POST[lastname] ($_POST[email])", "From: serveradmin@dev.morninj.com"); 
 					
 				}
 				else
@@ -129,7 +128,6 @@ Govit
 					echo("There was an error with your submission.");
 				}
 
-				*/
 	
 			}
 			
