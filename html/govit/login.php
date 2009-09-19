@@ -11,7 +11,7 @@ if (isset($_SESSION['user'])) {
 	
 	// If session is set, user is logged in
 	
-	echo("You're already logged in as " . $u_username);
+	echo("You're already logged in as " . $user_firstname);
 }
 else
 {

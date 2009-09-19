@@ -17,10 +17,9 @@ if (isset($_SESSION['user']))
 {
 	$user_isLoggedIn = true;
 	$user_id = $_SESSION['user']['id'];
-	$user_fullname = $_SESSION['user']['fullname'];
-	$user_username = $_SESSION['user']['username'];
+	$user_firstname = $_SESSION['user']['firstname'];
+	$user_lastname = $_SESSION['user']['lastname'];
 	$user_email = $_SESSION['user']['email'];
-	$user_zipcode = $_SESSION['user']['zipcode'];
 }
 
 
