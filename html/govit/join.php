@@ -98,24 +98,26 @@ else
 			}
 			else
 			{	
-				echo("<p>User added successfully!!</p><p><em>TODO: Send confirmation email with validation link.</em></p>");
+				echo("<p>User added successfully!");
 			
 				/*
 				
-				TODO: retrieve user's validation key and send it in an email
+				TODO: retrieve user's validation key
+				
+				$validation_key = get_validation_key($_POST['email']);
 				
 				
 				// User successfully created!
-				$emailMessage = "Hi $_POST[fullname],
+				$emailMessage = "Hi $_POST['firstname'],
 				
-This is where a welcome message would go.
+Welcome to Govit. Validate your account here: http://dev.morninj.com/govit/validate.php?v=$validation_key
 
-Yours,
-The Script
+Thanks,
+Govit
 ";
 
 				// Send email confirmation
-				if(mail($_POST['email'], "Welcome message subject", $emailMessage, "From: Email address <realemailaddress@domain.com>"))
+				if(mail($_POST['email'], "Welcome message subject", $emailMessage, "From: Email address <serveradmin@morninj.com>"))
 				{
 					?>
 					
@@ -123,7 +125,7 @@ The Script
 					
 					<?php
 					
-					mail("joey@morninj.com", "New user", "New user: $_POST[fullname] ($_POST[email])", "From: realemailaddress@domain.com"); 
+					mail("joey@morninj.com", "New user", "New user: $_POST[fullname] ($_POST[email])", "From: serveradmin@domain.com"); 
 					
 				}
 				else
