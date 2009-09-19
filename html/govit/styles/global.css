@@ -43,6 +43,12 @@ div.header h1
 	font-weight: normal;
 }
 
+div.header h1 a, div.header h1 a:active, div.header h1 a:visited
+{
+	color: #222222;
+	text-decoration: none;
+}
+
 div.header h1 span.version
 {
 	color: #999999;

@@ -9,7 +9,7 @@
 		
 		<div class="footer">
 		
-		This is Govit. <a href="http://dev.morninj.com/">http://dev.morninj.com/govit/</a>
+		This is Govit. <a href="http://dev.morninj.com/govit/">http://dev.morninj.com/govit/</a>
 		
 		</div><!-- /.footer -->
 		

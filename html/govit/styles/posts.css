@@ -51,7 +51,7 @@ div.commentsHeader p.discussionsBlurb
 	font-size: 12px;
 }
 
-div.postCommentGray
+div.postComment
 {
 	background-color: #F7F7F7;
 	border: 1px solid #cccccc;
@@ -99,7 +99,7 @@ a.offtopic, a.offtopic:active, a.offtopic:visited { color: #CC33CC; }
 a.offtopic:hover { color: #FF66FF; }
 
 a.abusive, a.abusive:active, a.abusive:visited { color: #BB0000; }
-a.abusive:hover { color: #FF0033; }
+a.abusive:hover { color: #fe6161; }
 
 div.commentReplyLevelOne
 {
@@ -114,3 +114,6 @@ div.commentReplyLevelTwo
 	border-left: 1px solid #cccccc;
 	margin: 20px 0 20px 110px;
 }
+
+span.showReplies { display: none; }
+span.hideReplies { display: inline; }
