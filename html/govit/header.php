@@ -8,10 +8,9 @@
 session_start();
 $user_isLoggedIn = false;
 $user_id = "";
-$user_fullname = "";
-$user_username = "";
+$user_firstname = "";
+$user_lastname = "";
 $user_email = "";
-$user_zipcode = "";
 
 if (isset($_SESSION['user']))
 {
@@ -50,12 +49,30 @@ function printHeader($page_title, $page_description, $page_keywords)
 			<h1><a href="/govit/">Govit</a> <span class="version">alpha</span></h1>
 			
 			<ul class="nav">
-				<li><a href="/govit/">Home</a></li>
+       
+       		<?php
+       		if ($user_isLoggedIn)
+            {
+				?>
+                <li><a href="/govit/">Home</a></li>
+				<li><a href="/govit/allposts.php">All Posts</a></li>
+				<li><a href="/govit/newpost.php">Make New Post</a></li>
+				<li><a href="/govit/login.php">Logout</a></li>
+				<li><a href="/govit/feedback.php">Feedback</a></li>
+                <?php
+            }
+			else
+			{
+			?>
+                <li><a href="/govit/">Home</a></li>
 				<li><a href="/govit/allposts.php">All Posts</a></li>
 				<li><a href="/govit/newpost.php">Make New Post</a></li>
 				<li><a href="/govit/join.php">Join</a></li>
 				<li><a href="/govit/login.php">Login</a></li>
 				<li><a href="/govit/feedback.php">Feedback</a></li>
+            <?php
+			}
+            ?>
 			</ul>
 		
 		</div><!-- /.header -->
