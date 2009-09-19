@@ -98,7 +98,7 @@ else
 			}
 			else
 			{	
-				echo("<p>User added successfully!!</p><p><em>TODO: Send confirmation email with validation link.</em></p><p>In the meantime, visit this link to validate the account: http://www.lonelyear.com/validate.php?v=$validation</p>");
+				echo("<p>User added successfully!!</p><p><em>TODO: Send confirmation email with validation link.</em></p>");
 			
 				/*
 				
