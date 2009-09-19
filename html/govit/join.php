@@ -102,6 +102,9 @@ else
 			
 				/*
 				
+				TODO: retrieve user's validation key and send it in an email
+				
+				
 				// User successfully created!
 				$emailMessage = "Hi $_POST[fullname],
 				
