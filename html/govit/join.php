@@ -99,10 +99,6 @@ else
 			else
 			{	
 				echo("<p>User added successfully!");
-			
-				/*
-				
-				TODO: retrieve user's validation key
 				
 				$validation_key = get_validation_key($_POST['email']);
 				
