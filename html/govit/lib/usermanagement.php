@@ -13,6 +13,7 @@ function add_user($email, $password, $firstname, $lastname, $canpost) {
     $valkey = gen_validation_key($email);
     $sql = "INSERT INTO users (email, password, validated, validationkey, joindate, firstname, lastname, canpost)
 VALUES ('$email', PASSWORD('$password'), 0, '$valkey', CURDATE(), '$firstname', '$lastname', $canpost_entry)";
+    echo $sql;
     $success = mysql_query($sql);
     db_close($dbcon);
     return $success;
