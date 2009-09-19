@@ -29,8 +29,7 @@ function user_id($email) {
     $sql = "SELECT id FROM users WHERE email='$email'";
     echo $sql;
     $result = mysql_query("SELECT id FROM users WHERE email='$email'");
-    echo $result;
-    if($result){
+    if(mysql_num_rows($result)>0){
 	$row = mysql_fetch_array($result);
 	db_close($con);
 	return $row['id'];
@@ -42,7 +41,7 @@ function user_id($email) {
 
 function get_user_row($id){
     $result=mysql_query("SELECT * FROM users WHERE id=$id)");
-    if($result){
+    if(mysql_num_rows($result)>0){
 	return mysql_fetch_array($result);
     }else{
 	return null;
@@ -52,7 +51,7 @@ function get_user_row($id){
 function get_user_col($id, $col){
     $con = db_connect();
     $result = mysql_query("SELECT $col FROM users WHERE id=$id)");
-    if($result){
+    if(mysql_num_rows($result)>0){
 	$row = mysql_fetch_array($result);
 	db_close($con);
 	return $row[$col];
@@ -64,9 +63,8 @@ function get_user_col($id, $col){
 
 function validate_user($id, $validationkey) {
     $con = db_connect();
-    $result = mysql_query("SELECT validationkey FROM users WHERE id='$id'");
-    $row = mysql_fetch_array($result);
-    if(!$row or $row['validationkey']!=$validationkey){
+    $result = mysql_query("SELECT validationkey FROM users WHERE id=$id AND validationkey='$validationkey'");
+    if(mysql_num_rows($result)==0){
 	db_close($con);
 	return false;
     }else{
