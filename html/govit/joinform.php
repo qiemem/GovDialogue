@@ -24,11 +24,6 @@
 	</p>
 
 	<p>
-		Zip code:
-		<input id="zipcode" name="zipcode" type="text" />		
-	</p>
-
-	<p>
 		Password:
 		<input id="password1" name="password1" type="password" />		
 	</p>
