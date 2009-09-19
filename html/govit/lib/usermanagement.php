@@ -23,8 +23,13 @@ function email_in_use($email) {
 }
 
 function user_id($email) {
+    $email = mysql_real_escape_string($email);
+    $sql = "SELECT id FROM users WHERE email='$email'";
+    echo $sql;
     $result = mysql_query("SELECT id FROM users WHERE email='$email'");
-    if($row = mysql_fetch_array($result)){
+    echo $result;
+    if($result){
+	$row = mysql_fetch_array($result);
 	return $row['id'];
     }else{
 	return -1;
@@ -67,7 +72,7 @@ function gen_validation_key($id) {
 }
 
 function get_validation_key($id) {
-
+}
 
 function bool_to_int($bool){
     if($bool) {
