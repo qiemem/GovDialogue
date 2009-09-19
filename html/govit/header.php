@@ -52,11 +52,11 @@ function printHeader($page_title, $page_description, $page_keywords)
 			
 			<ul class="nav">
 				<li><a href="/govit/">Home</a></li>
-				<li><a href="/allposts.php">All Posts</a></li>
-				<li><a href="/newpost.php">Make New Post</a></li>
-				<li><a href="/join.php">Join</a></li>
-				<li><a href="/login.php">Login</a></li>
-				<li><a href="/feedback.php">Feedback</a></li>
+				<li><a href="/govit/allposts.php">All Posts</a></li>
+				<li><a href="/govit/newpost.php">Make New Post</a></li>
+				<li><a href="/govit/join.php">Join</a></li>
+				<li><a href="/govit/login.php">Login</a></li>
+				<li><a href="/govit/feedback.php">Feedback</a></li>
 			</ul>
 		
 		</div><!-- /.header -->
