@@ -92,7 +92,7 @@ else
 		if (!inError())
 		{
 			
-			if(!add_user($_POST['email'], $_POST['password'], $_POST['firstname'], $_POST['lastname'], 0))
+			if(!add_user($_POST['email'], $_POST['password1'], $_POST['firstname'], $_POST['lastname'], 0))
 			{
 				$errors[] = 'There was a database error.';
 			}
