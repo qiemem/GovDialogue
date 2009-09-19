@@ -5,7 +5,13 @@ require_once("usermanagement.php");
 function create_session($id) {
     $row = get_user_row($id);
     if($row) {
-	$_SESSION['user'] = $row;
+	$_SESSION['user'] 
+	    = array('id' => $row['id'],
+		    'email' => $row['email'],
+		    'firstname' => $row['firstname'],
+		    'lastname' => $row['lastname'],
+		    'canpost' => $row['canport'],
+		    'validated' => $row['validated']);
 	return true;
     }else{
 	return false;
