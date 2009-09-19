@@ -7,7 +7,7 @@ printHeader("Title", "Keywords", "Description");
 
 ?>
 
-Bloop.<?php echo($page_title); ?>
+Bloop. <a href="viewpost.php">See a sample post</a>.
 
 <?php
 

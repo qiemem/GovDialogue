@@ -12,7 +12,7 @@ body
 }
 
 a, a:active, a:visited { color: #0033CC; }
-a:hover { color: #0066CC; }
+a:hover { color: #0066FF; }
 
 p
 {
@@ -43,15 +43,16 @@ div.header h1
 	font-weight: normal;
 }
 
+div.header h1 a, div.header h1 a:active, div.header h1 a:visited
+{
+	color: #222222;
+	text-decoration: none;
+}
+
 div.header h1 span.version
 {
 	color: #999999;
 	font-size: 18px;
-}
-
-div.header h2
-{
-	font-weight: normal;
 }
 
 div.header ul.nav

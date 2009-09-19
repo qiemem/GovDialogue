@@ -36,6 +36,9 @@ function printHeader($page_title, $page_description, $page_keywords)
 <title><?php echo($page_title); ?></title>
 
 <link rel="stylesheet" type="text/css" href="styles/global.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="styles/posts.css" media="screen" />
+
+<script language="javascript" type="text/javascript" src="scripts/global.js"></script>
 
 </head>
 
@@ -45,7 +48,7 @@ function printHeader($page_title, $page_description, $page_keywords)
 		
 		<div class="header">
 		
-			<h1>Govit <span class="version">alpha</span></h1>
+			<h1><a href="/govit/">Govit</a> <span class="version">alpha</span></h1>
 			
 			<ul class="nav">
 				<li><a href="#">Home</a></li>
