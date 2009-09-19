@@ -10,7 +10,7 @@
 // Creates a function to create a database connection
 
 $dbhost = "localhost";
-$dbname = "loginsystem";
+$dbname = "db72199_govdb";
 $dbuser = "root";
 $dbpass = "sapass";
 
