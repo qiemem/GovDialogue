@@ -32,12 +32,12 @@ function user_id($email) {
     echo $sql;
     $result = mysql_query("SELECT id FROM users WHERE email='$email'");
     if(mysql_num_rows($result)>0){
-	$id = mysql_result($result, 0);
-	db_close($con);
-	return $id;
+        $id = mysql_result($result, 0);
+        db_close($con);
+        return $id;
     }else{
-	db_close($con);
-	return -1;
+        db_close($con);
+        return -1;
     }
 }
 
@@ -45,12 +45,12 @@ function get_user_row($id){
     $con = db_connect();
     $result=mysql_query("SELECT * FROM users WHERE id=$id");
     if(mysql_num_rows($result)>0){
-	$row = mysql_fetch_array($result);
-	db_close($con);
-	return $row;
+        $row = mysql_fetch_array($result);
+        db_close($con);
+        return $row;
     }else{
-	db_close($con);
-	return null;
+        db_close($con);
+        return null;
     }
 }
 
@@ -58,29 +58,29 @@ function get_user_col($id, $col){
     $con = db_connect();
     $result = mysql_query("SELECT $col FROM users WHERE id=$id)");
     if(mysql_num_rows($result)>0){
-	$val = mysql_result($result, 0);
-	db_close($con);
-	return $row[$col];
+        $val = mysql_result($result, 0);
+        db_close($con);
+        return $row[$col];
     }else{
-	db_close($con);
-	return null;
+        db_close($con);
+        return null;
     }
 }
 
 function validate_user($validationkey) {
     if($validationkey=="")
-	return false;
+        return false;
     $con = db_connect();
     $validationkey = mysql_real_escape_string($validationkey);
     $result = mysql_query("SELECT id FROM users WHERE validationkey='$validationkey'");
     if(mysql_num_rows($result)==0){
-	db_close($con);
-	return false;
+        db_close($con);
+        return false;
     }else{
-	$id = mysql_result($result, 0);
-	mysql_query("UPDATE users SET validated=1, validationkey=''  WHERE id=$id");
-	db_close($con);
-	return true;
+        $id = mysql_result($result, 0);
+        mysql_query("UPDATE users SET validated=1, validationkey=''  WHERE id=$id");
+        db_close($con);
+        return true;
     }
 }
 
@@ -104,7 +104,7 @@ function get_validation_key($email) {
     $result = mysql_query("SELECT validationkey FROM users WHERE email='$email'");
     $key = "";
     if(mysql_num_rows($result)>0){
-	$key = mysql_result($result, 0);
+        $key = mysql_result($result, 0);
     }
     db_close($con);
     return $key;
@@ -115,27 +115,27 @@ function is_validated($email) {
     $email = mysql_real_escape_string($string);
     $result = mysql_query("SELECT validated FROM users WHERE email='$email'");
     if(mysql_num_rows($result)>0) {
-	$validated = int_to_bool(mysql_result($result, 0));
-	db_close($con);
-	return $result;
+        $validated = int_to_bool(mysql_result($result, 0));
+        db_close($con);
+        return $result;
     }else{
-	return false;
+        return false;
     }
 }
 
 function bool_to_int($bool){
     if($bool) {
-	return 1;
+        return 1;
     } else {
-	return 0;
+        return 0;
     }
 }
 
 function int_to_bool($int){
     if($int==0) {
-	return false;
+        return false;
     } else {
-	return true;
+        return true;
     }
 }
 ?>
