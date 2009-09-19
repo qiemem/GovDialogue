@@ -2,7 +2,7 @@
 
 // join.php
 
-require_once("");
+require_once("lib/usermanagement.php");
 
 require_once("header.php");
 printHeader("Join", "Keywords", "Description");
