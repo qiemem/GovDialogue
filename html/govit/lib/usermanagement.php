@@ -4,6 +4,10 @@ require_once("database.php");
 
 
 function add_user($email, $password, $firstname, $lastname, $canpost) {
+    $email = mysql_real_escape_string($email);
+    $password = mysql_real_escape_string($password);
+    $firstname = mysql_real_escape_string($firstname);
+    $lastname = mysql_real_escape_string($lastname);
     $dbcon = db_connect();
     $canpost_entry = bool_to_int($canpost);
     $valkey = gen_validation_key($id);
