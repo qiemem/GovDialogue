@@ -23,6 +23,8 @@ function email_in_use($email) {
     return user_id($email)!=-1;
 }
 
+// Returns the id of the user with the given email, or -1
+// if no such user is found.
 function user_id($email) {
     $con = db_connect();
     $email = mysql_real_escape_string($email);
@@ -30,9 +32,9 @@ function user_id($email) {
     echo $sql;
     $result = mysql_query("SELECT id FROM users WHERE email='$email'");
     if(mysql_num_rows($result)>0){
-	$row = mysql_fetch_array($result);
+	$id = mysql_result($result, 0);
 	db_close($con);
-	return $row['id'];
+	return $id;
     }else{
 	db_close($con);
 	return -1;
@@ -52,7 +54,7 @@ function get_user_col($id, $col){
     $con = db_connect();
     $result = mysql_query("SELECT $col FROM users WHERE id=$id)");
     if(mysql_num_rows($result)>0){
-	$row = mysql_fetch_array($result);
+	$val = mysql_result($result, 0);
 	db_close($con);
 	return $row[$col];
     }else{
@@ -61,24 +63,46 @@ function get_user_col($id, $col){
     }
 }
 
-function validate_user($id, $validationkey) {
+function validate_user($validationkey) {
+    if($validationkey=="")
+	return false;
     $con = db_connect();
-    $result = mysql_query("SELECT validationkey FROM users WHERE id=$id AND validationkey='$validationkey'");
+    $result = mysql_query("SELECT id FROM users WHERE validationkey='$validationkey'");
     if(mysql_num_rows($result)==0){
 	db_close($con);
 	return false;
     }else{
-	mysql_query("UPDATE users SET validated=1 WHERE id=$id");
+	$id = mysql_result($result, 0);
+	mysql_query("UPDATE users SET validated=1, validationkey=''  WHERE id=$id");
 	db_close($con);
 	return true;
     }
+}
+
+function check_password($email, $password) {
+    $con = db_connect();
+    $email = mysql_real_escape_string($email);
+    $password = mysql_real_escape_string($password);
+    $result = mysql_query("SELECT * FROM users WHERE email='$email' AND password=PASSWORD('$password')");
+    $success = mysql_num_rows($result)>0;
+    db_close($con);
+    return $success;
 }
 
 function gen_validation_key($email) {
     return substr(md5(time().$email), 0, 10);
 }
 
-function get_validation_key($id) {
+function get_validation_key($email) {
+    $con = db_connect();
+    $email = mysql_real_escape_string($email);
+    $result = mysql_query("SELECT validationkey FROM users WHERE email='$email'");
+    $key = "";
+    if(mysql_num_rows($result)>0){
+	$key = mysql_result($result, 0);
+    }
+    db_close($con);
+    return $key;
 }
 
 function bool_to_int($bool){
