@@ -4,11 +4,11 @@ require_once("database.php");
 
 
 function add_user($email, $password, $firstname, $lastname, $canpost) {
+    $dbcon = db_connect();
     $email = mysql_real_escape_string($email);
     $password = mysql_real_escape_string($password);
     $firstname = mysql_real_escape_string($firstname);
     $lastname = mysql_real_escape_string($lastname);
-    $dbcon = db_connect();
     $canpost_entry = bool_to_int($canpost);
     $valkey = gen_validation_key($email);
     $sql = "INSERT INTO users (email, password, validated, validationkey, joindate, firstname, lastname, canpost)
@@ -24,6 +24,7 @@ function email_in_use($email) {
 }
 
 function user_id($email) {
+    $con = db_connect();
     $email = mysql_real_escape_string($email);
     $sql = "SELECT id FROM users WHERE email='$email'";
     echo $sql;
@@ -31,8 +32,10 @@ function user_id($email) {
     echo $result;
     if($result){
 	$row = mysql_fetch_array($result);
+	db_close($con);
 	return $row['id'];
     }else{
+	db_close($con);
 	return -1;
     }
 }
@@ -47,11 +50,14 @@ function get_user_row($id){
 }
 
 function get_user_col($id, $col){
+    $con = db_connect();
     $result = mysql_query("SELECT $col FROM users WHERE id=$id)");
     if($result){
 	$row = mysql_fetch_array($result);
+	db_close($con);
 	return $row[$col];
     }else{
+	db_close($con);
 	return null;
     }
 }
@@ -69,8 +75,6 @@ function validate_user($id, $validationkey) {
 	return true;
     }
 }
-
-
 
 function gen_validation_key($email) {
     return substr(md5(time().$email), 0, 10);
