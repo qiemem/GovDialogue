@@ -1,4 +1,7 @@
 <?php
+
+require_once("usermanagement.php");
+
 function create_session($id) {
     $result = get_user_row($id);
     if($result) {
