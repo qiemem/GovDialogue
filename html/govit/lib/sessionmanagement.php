@@ -16,7 +16,7 @@ function create_session($id) {
     }else{
         return false;
     }
-  }
+}
 
 function login($email, $password) {
     if(check_password($email, $password)){
