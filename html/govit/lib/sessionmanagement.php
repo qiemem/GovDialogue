@@ -19,7 +19,7 @@ function create_session($id) {
   }
 
 function login($email, $password) {
-    if(check_password($email)){
+    if(check_password($email, $password)){
 	return create_session(user_id($email));
     }else{
 	return false;
