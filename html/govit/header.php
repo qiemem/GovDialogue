@@ -36,6 +36,7 @@ function printHeader($page_title, $page_description, $page_keywords)
 <title><?php echo($page_title); ?></title>
 
 <link rel="stylesheet" type="text/css" href="styles/global.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="styles/posts.css" media="screen" />
 
 </head>
 
