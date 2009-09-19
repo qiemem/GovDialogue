@@ -2,6 +2,8 @@
 
 // join.php
 
+require_once("");
+
 require_once("header.php");
 printHeader("Join", "Keywords", "Description");
 
@@ -15,7 +17,7 @@ Else
 		Errors? If yes:
 			Display errors
 		Else:
-			Process form
+			Process form/add user
 	Else
 		Display join form
 
