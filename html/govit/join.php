@@ -59,9 +59,6 @@ else
 		if (strlen($_POST['email']) <= 0) {
 				$errors[] = 'You must enter your email address';
 		}
-		if (strlen($_POST['zipcode']) <= 0) {
-				$errors[] = 'You must enter your zip code.';
-		}
 		if (strlen($_POST['password1']) < 6) {
 				$errors[] = 'Your password must be at least 6 characters long.';
 		}
@@ -146,8 +143,7 @@ The Script
 			// Display error messages
 			for ($i = 0; $i < count($errors); $i++)
 			{
-				displayError($errors[$i]);
-				// (displayError() is in common.php)
+				echo($errors[$i] . "<br />");
 			}
 			
 		}
