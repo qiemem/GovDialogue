@@ -67,6 +67,7 @@ function validate_user($validationkey) {
     if($validationkey=="")
 	return false;
     $con = db_connect();
+    $validationkey = mysql_real_escape_string($validationkey);
     $result = mysql_query("SELECT id FROM users WHERE validationkey='$validationkey'");
     if(mysql_num_rows($result)==0){
 	db_close($con);
@@ -103,6 +104,19 @@ function get_validation_key($email) {
     }
     db_close($con);
     return $key;
+}
+
+function is_validated($email) {
+    $con = db_connection();
+    $email = mysql_real_escape_string($string);
+    $result = mysql_query("SELECT validated FROM users WHERE email='$email'");
+    if(mysql_num_rows($result)>0) {
+	$validated = int_to_bool(mysql_result($result, 0));
+	db_close($con);
+	return $result;
+    }else{
+	return false;
+    }
 }
 
 function bool_to_int($bool){
