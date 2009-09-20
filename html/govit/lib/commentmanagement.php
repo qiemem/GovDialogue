@@ -72,7 +72,6 @@ function get_top_level_children_of_post($postid) {
     validate_post_id($postid);
     $con = db_connect();
     $sql = "SELECT * FROM comments WHERE postparent=$postid AND parent IS NULL";
-    echo $sql;
     $result = mysql_query($sql);
     db_close($con);
     return $result;
@@ -91,7 +90,7 @@ function write_comment_thread($commentid) {
 ?>
 <p class="commentText"> <?= $comment['content']; ?> </p>
 <p class="commentCredits">Posted by: <?= $user['firstname'];?> <?= $user['lastname'];?></p>
-<p class="commentRating">Rate this comment</p>
+<p class="commentRating">Rate this comment: <a href="#" class="insightful">Insightful</a> (3) | <a href="#" class="offtopic">Off topic</a> (1) | <a href="#" class="abusive">Abusive</a> (0)</p>
 <p class="commentReply">
 <a href="#">Reply</a>
 <?php

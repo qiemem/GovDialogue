@@ -48,80 +48,6 @@ div.commentsHeader p.discussionsBlurb
 	font-size: 12px;
 }
 
-div.postComment
-{
-	background-color: #F4F4F4;
-	border: 1px solid #cccccc;
-	border-left: 0;
-	border-right: 0;
-	padding: 10px;
-	margin: 20px 0 0 0;
-}
-
-p.commentText
-{	
-	color: #333333;
-	font-size: 12px;
-	margin: 0;
-	padding: 0;
-}
-
-p.commentCredits
-{
-	color: #555555;
-	font-size: 12px;
-	margin: 10px 0 0 0;
-	padding: 0;
-}
-
-p.commentRating
-{
-	color: #555555;
-	font-size: 12px;
-	margin: 0;
-	padding: 0;
-}
-
-p.commentReply
-{
-	font-size: 14px;
-	margin: 10px 0 0 0;
-	padding: 0;
-}
-
-a.insightful, a.insightful:active, a.insightful:visited { color: #00AA00; }
-a.insightful:hover { color: #00DD00; }
-
-a.offtopic, a.offtopic:active, a.offtopic:visited { color: #CC33CC; }
-a.offtopic:hover { color: #FF66FF; }
-
-a.abusive, a.abusive:active, a.abusive:visited { color: #BB0000; }
-a.abusive:hover { color: #fe6161; }
-
-div.commentReplyLevelOne
-{
-	padding: 0 0 0 10px;
-	border-left: 1px solid #cccccc;
-	margin: 20px 0 20px 50px;
-}
-
-div.commentReplyLevelTwo
-{
-	padding: 0 0 0 10px;
-	border-left: 1px solid #cccccc;
-	margin: 20px 0 20px 110px;
-}
-
-span.showReplies { display: none; }
-span.hideReplies { display: inline; }
-
-
-
-/*
-Printcomments.php
----------
-*/
-
 div.commentsList ol.toplevel
 {
 	color: #555555;
@@ -153,6 +79,7 @@ div.commentsList ol.child
 	margin: 0;
 	margin-left: 60px;
 	padding: 0;
+	display: none; /* hide child replies by default */
 }
 
 div.commentsList ol.child li
@@ -193,3 +120,30 @@ p.commentReply
 	margin: 10px 0 0 0 !important;
 	padding: 0;
 }
+
+
+a.insightful, a.insightful:active, a.insightful:visited { color: #00AA00; }
+a.insightful:hover { color: #00DD00; }
+
+a.offtopic, a.offtopic:active, a.offtopic:visited { color: #CC33CC; }
+a.offtopic:hover { color: #FF66FF; }
+
+a.abusive, a.abusive:active, a.abusive:visited { color: #BB0000; }
+a.abusive:hover { color: #fe6161; }
+
+div.commentReplyLevelOne
+{
+	padding: 0 0 0 10px;
+	border-left: 1px solid #cccccc;
+	margin: 20px 0 20px 50px;
+}
+
+div.commentReplyLevelTwo
+{
+	padding: 0 0 0 10px;
+	border-left: 1px solid #cccccc;
+	margin: 20px 0 20px 110px;
+}
+
+span.showReplies { display: inline; }
+span.hideReplies { display: none; }
