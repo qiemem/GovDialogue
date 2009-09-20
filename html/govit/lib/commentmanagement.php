@@ -12,7 +12,7 @@ function post_parent($commentid){
     if(mysql_num_rows($result)>0){
         return mysql_result($result,0);
     }else{
-        throw new Exception("Comment " . $commentid . " not found.");
+       throw new Exception("Comment " . $commentid . " not found.");
     }
 }
 
@@ -96,10 +96,15 @@ function write_comment_thread($commentid) {
 <a href="#">Reply</a>
 |
 <span class="hideReplies" id="comment<?=$commentid;?>hidereplies">
-<a href="javascript:t('<?=$commentid;?>');">Hide Replies</a>
+
+
+
+<a href="javascript:toggleVisibility('<?=$commentid;?>');">Hide Replies</a>
+
+
 </span>
 <span class="showReplies" id="comment<?=$commentid;?>showreplies">
-<a href="javascript:t('<?=$commentid;?>');">Show Replies</a> (<?= get_num_children($commentid); ?>)
+<a href="javascript:toggleVisibility('<?=$commentid;?>');">Show Replies</a> (<?= get_num_children($commentid); ?>)
 </span>
 </p>
 </li>
