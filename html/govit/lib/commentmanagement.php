@@ -69,7 +69,8 @@ function get_num_children($commentid) {
 }
 
 function get_parent($commentid) {
-    return get_comment($commentid)['parent'];
+	$comment = get_comment($commentid);
+    return $comment['parent'];
 }
 
 function get_top_level_children_of_post($postid) {
@@ -115,7 +116,7 @@ if(get_num_children($commentid)>0){
     $children = get_children_of_comment($commentid);
     if(mysql_num_rows($children)>0){
         if($showcomments[$commentid]){
-            echo "<ol class=\"child\" id=\"comment".$commentid."replies\" style="display: block !important;">\n";
+            echo "<ol class=\"child\" id=\"comment".$commentid."replies\" style=\"display: block !important;\">\n";
         }else{
             echo "<ol class=\"child\" id=\"comment".$commentid."replies\">\n";
         }
@@ -142,7 +143,7 @@ function write_comments_of_post($postid, $showcomments) {
 }
 
 function get_comment_ancestor_set($commentid) {
-    $parentcomment = get_parent[$commentid];
+    $parentcomment = get_parent($commentid);
     if($parentcomment){
         $anc = get_comment_ancestor_set($parentcomment);
         $anc[$commendid]=true;
