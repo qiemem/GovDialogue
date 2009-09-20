@@ -1,5 +1,13 @@
 // global.js
 
+// Toggle wrapper
+function t(commentID)
+{
+	toggleLayerVisibility("comment" + commentID + "replies");
+	toggleLayerVisibilityInline("comment" + commentID + "hidereplies");
+	toggleLayerVisibilityInline("comment" + commentID + "showreplies");
+}
+
 // Toggle element visibility
 function toggleLayerVisibility(layerID)
 {

@@ -50,7 +50,7 @@ div.commentsHeader p.discussionsBlurb
 
 div.postComment
 {
-	background-color: #F7F7F7;
+	background-color: #F4F4F4;
 	border: 1px solid #cccccc;
 	border-left: 0;
 	border-right: 0;
@@ -114,3 +114,82 @@ div.commentReplyLevelTwo
 
 span.showReplies { display: none; }
 span.hideReplies { display: inline; }
+
+
+
+/*
+Printcomments.php
+---------
+*/
+
+div.commentsList ol.toplevel
+{
+	color: #555555;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+div.commentsList ol.toplevel p
+{
+	margin: 0;
+	padding: 0;
+}
+
+
+div.commentsList ol.toplevel li.toplevelcomment
+{
+	background-color: #F4F4F4;
+	border: 1px solid #cccccc;
+	border-left: 0;
+	border-right: 0;
+	padding: 10px;
+	margin: 20px 0 0 0;
+}
+
+div.commentsList ol.child
+{
+	list-style-type: none;
+	margin: 0;
+	margin-left: 60px;
+	padding: 0;
+}
+
+div.commentsList ol.child li
+{
+	border: 0;
+	border-left: 1px solid #CCCCCC;
+	margin: 20px 0;
+	padding: 0 10px;
+}
+
+p.commentText
+{	
+	color: #333333;
+	font-size: 12px;
+	margin: 0;
+	padding: 0;
+}
+
+p.commentCredits
+{
+	color: #555555;
+	font-size: 12px;
+	margin: 10px 0 0 0 !important;
+	padding: 0;
+}
+
+p.commentRating
+{
+	color: #555555;
+	font-size: 12px;
+	margin: 0;
+	padding: 0;
+}
+
+p.commentReply
+{
+	font-size: 14px;
+	margin: 10px 0 0 0 !important;
+	padding: 0;
+}
