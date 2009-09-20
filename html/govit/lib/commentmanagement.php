@@ -117,8 +117,7 @@ if(get_num_children($commentid)>0){
 <span class="showReplies" id="comment<?=$commentid;?>showreplies">
 <a href="javascript:toggleVisibility('<?=$commentid;?>');">Show Replies</a> (<?= get_num_children($commentid); ?>)
 </span>
-?>
-<?php } ?>
+<?php }} ?>
 </p>
 </li>
 <?php
