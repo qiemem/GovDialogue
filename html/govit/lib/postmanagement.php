@@ -27,7 +27,7 @@ function get_post($postid) {
 }
 
 function validate_post_id($postid){
-    if(!is_int($postid)){
+    if(!is_numeric($postid)){
         throw new Exception($postid . " is not a valid post id.");
     }
 }
