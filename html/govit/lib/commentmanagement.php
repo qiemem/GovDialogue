@@ -116,7 +116,7 @@ if(get_num_children($commentid)>0){
     $children = get_children_of_comment($commentid);
     if(mysql_num_rows($children)>0){
         if($showcomments[$commentid]){
-            echo "<ol class=\"child\" id=\"comment".$commentid."replies\" style=\"display: block !important;\">\n";
+            echo "<ol class=\"child\" id=\"comment".$commentid."replies\" style=\"display: block;\">\n";
         }else{
             echo "<ol class=\"child\" id=\"comment".$commentid."replies\">\n";
         }
