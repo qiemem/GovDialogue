@@ -93,7 +93,7 @@ function write_comment_thread($commentid, $showcomments) {
         echo "<li class=\"childcomment\" id=\"comment$commentid\">\n";
     }
 ?>
-<a name=id<?= $commentid ?>></a>
+<a name="id<?= $commentid ?>"></a>
 <p class="commentText"> <?= $comment['content']; ?> </p>
 <p class="commentCredits">Posted by: <?= $user['firstname'];?> <?= $user['lastname'];?></p>
 <p class="commentRating">Rate this comment: <a href="#" class="insightful">Insightful</a> (3) | <a href="#" class="offtopic">Off topic</a> (1) | <a href="#" class="abusive">Abusive</a> (0)</p>
@@ -146,7 +146,7 @@ function get_comment_ancestor_set($commentid) {
     $parentcomment = get_parent($commentid);
     if($parentcomment){
         $anc = get_comment_ancestor_set($parentcomment);
-        $anc[$commendid]=true;
+        $anc[$commentid]=true;
     } else {
         $anc = array($commentid => true);
     }
