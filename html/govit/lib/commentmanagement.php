@@ -64,14 +64,28 @@ function get_children_of_comment($commentid) {
 }
 
 function get_top_level_children_of_post($postid) {
-    validate_comment($postid);
+    validate_post_id($postid);
     $con = db_connect();
     $sql = "SELECT * FROM comments WHERE postparent=$postid AND parent=NULL";
     $result = mysql_query($sql);
     db_close($con);
     return $result;
 }
- 
+
+
+function write_children_of_comment($commentid) {
+    validate_comment_id($commentid);
+    echo "<li id=\"$comment\"></li>";
+    $children = get_children_of_comment($commentid);
+    if(mysql_num_rows($children)>0){
+        echo "<ol id=\"$commentid-children\">";
+        while($child = mysql_fetch_array($children)) {
+            write_children_of_comment($child['id']);
+        }
+        echo "</ol>";
+    }
+}
+            
 
 function validate_comment_id($commentid) {
     if(!is_int($commentid)){
