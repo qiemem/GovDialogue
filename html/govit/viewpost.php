@@ -6,7 +6,10 @@ require_once("header.php");
 require_once("lib/commentmanagement.php");
 printHeader("Title", "Keywords", "Description");
 
+
 ?>
+
+
 
 <div class="postTitle">
     <h2>Post title goes here. This is what a post title would be. It might ask a question, no?</h2>
@@ -21,7 +24,10 @@ printHeader("Title", "Keywords", "Description");
 </div>
 
 <div class="commentsList"><?php
-write_comments_of_post(0);
+write_comments_of_post(0, get_comment_ancestor_set(4));
+
+// second parameter: id whose ancestors we want to be shown
+
 ?></div><?php
 
 require_once("footer.php");

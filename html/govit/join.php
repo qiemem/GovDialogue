@@ -2,8 +2,6 @@
 
 // join.php
 
-error_reporting(E_ALL);
-
 require_once("lib/usermanagement.php");
 
 require_once("header.php");

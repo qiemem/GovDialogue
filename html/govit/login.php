@@ -2,6 +2,8 @@
 
 // login.php
 
+ob_start();
+
 require_once("lib/sessionmanagement.php");
 
 require_once("header.php");
@@ -11,7 +13,7 @@ if (isset($_SESSION['user'])) {
 	
 	// If session is set, user is logged in
 	
-	echo("You're already logged in as " . $user_firstname);
+	echo("Logged in as " . $user_firstname);
 }
 else
 {
@@ -32,7 +34,8 @@ else
 			{
 				if(login($_POST['email'], $_POST['password']))
 				{
-					echo("Logged in.");
+					header("Location: http://dev.morninj.com/govit/login.php");
+					exit();	
 				}
 				else
 				{
@@ -66,5 +69,7 @@ else
 	
 }
 require_once("footer.php");
+
+ob_flush();
 
 ?>

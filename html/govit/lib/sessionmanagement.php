@@ -3,7 +3,7 @@
 require_once("usermanagement.php");
 
 function create_session($id) {
-    $row = get_user_row($id);
+    $row = get_user($id);
     if($row) {
         $_SESSION['user'] 
             = array('id' => $row['id'],

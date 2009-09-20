@@ -6,7 +6,9 @@
 // Most values will remain empty unless the user is logged in
 
 session_start();
-$user_isLoggedIn = false;
+
+function isUserLoggedIn() { return isset($_SESSION['user']); }
+
 $user_id = "";
 $user_firstname = "";
 $user_lastname = "";
@@ -14,7 +16,6 @@ $user_email = "";
 
 if (isset($_SESSION['user']))
 {
-	$user_isLoggedIn = true;
 	$user_id = $_SESSION['user']['id'];
 	$user_firstname = $_SESSION['user']['firstname'];
 	$user_lastname = $_SESSION['user']['lastname'];
@@ -51,13 +52,14 @@ function printHeader($page_title, $page_description, $page_keywords)
 			<ul class="nav">
        
        		<?php
-       		if ($user_isLoggedIn)
+       		if (isUserLoggedIn())
             {
 				?>
                 <li><a href="/govit/">Home</a></li>
 				<li><a href="/govit/allposts.php">All Posts</a></li>
 				<li><a href="/govit/newpost.php">Make New Post</a></li>
-				<li><a href="/govit/login.php">Logout</a></li>
+                <li><a href="/govit/profile.php">Your Profile</a></li>
+				<li><a href="/govit/logout.php">Logout</a></li>
 				<li><a href="/govit/feedback.php">Feedback</a></li>
                 <?php
             }
