@@ -91,27 +91,26 @@ function write_comment_thread($commentid) {
 ?>
 <p class="commentText"> <?= $comment['content']; ?> </p>
 <p class="commentCredits">Posted by: <?= $user['firstname'];?> <?= $user['lastname'];?></p>
-<p class="commentRating">Rate this comment!!!! </p>
+<p class="commentRating">Rate this comment</p>
 <p class="commentReply">
 <a href="#">Reply</a>
+<?php
+if(get_num_children($commentid)>0){
+?>
 |
 <span class="hideReplies" id="comment<?=$commentid;?>hidereplies">
-
-
-
 <a href="javascript:toggleVisibility('<?=$commentid;?>');">Hide Replies</a>
-
-
 </span>
 <span class="showReplies" id="comment<?=$commentid;?>showreplies">
 <a href="javascript:toggleVisibility('<?=$commentid;?>');">Show Replies</a> (<?= get_num_children($commentid); ?>)
 </span>
+<?php}?>
 </p>
 </li>
 <?php
     $children = get_children_of_comment($commentid);
     if(mysql_num_rows($children)>0){
-        echo "<ol id=\"comment".$commentid."replies\">\n";
+        echo "<ol class=\"child\" id=\"comment".$commentid."replies\">\n";
         while($child = mysql_fetch_array($children)) {
             write_comment_thread($child['id']);
         }
