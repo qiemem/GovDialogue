@@ -41,7 +41,7 @@ function user_id($email) {
     }
 }
 
-function get_user_row($id){
+function get_user($id){
     validate_user_id($id);
     $con = db_connect();
     $result=mysql_query("SELECT * FROM users WHERE id=$id");
@@ -126,7 +126,7 @@ function is_validated($email) {
 }
 
 function validate_user_id($id){
-    if(!is_int($id)){
+    if(!is_numeric($id)){
         throw new Exception($id . " is not a valid user id.");
     }
 }
