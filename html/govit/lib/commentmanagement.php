@@ -68,6 +68,10 @@ function get_num_children($commentid) {
     return mysql_num_rows($children);
 }
 
+function get_parent($commentid) {
+    return get_comment($commentid)['parent'];
+}
+
 function get_top_level_children_of_post($postid) {
     validate_post_id($postid);
     $con = db_connect();
@@ -78,7 +82,7 @@ function get_top_level_children_of_post($postid) {
 }
 
 
-function write_comment_thread($commentid) {
+function write_comment_thread($commentid, $showcomments) {
     validate_comment_id($commentid);
     $comment = get_comment($commentid);
     $user = get_user($comment['user']);
@@ -88,6 +92,7 @@ function write_comment_thread($commentid) {
         echo "<li class=\"childcomment\" id=\"comment$commentid\">\n";
     }
 ?>
+<a name=id<?= $commentid ?>></a>
 <p class="commentText"> <?= $comment['content']; ?> </p>
 <p class="commentCredits">Posted by: <?= $user['firstname'];?> <?= $user['lastname'];?></p>
 <p class="commentRating">Rate this comment: <a href="#" class="insightful">Insightful</a> (3) | <a href="#" class="offtopic">Off topic</a> (1) | <a href="#" class="abusive">Abusive</a> (0)</p>
@@ -109,21 +114,25 @@ if(get_num_children($commentid)>0){
 <?php
     $children = get_children_of_comment($commentid);
     if(mysql_num_rows($children)>0){
-        echo "<ol class=\"child\" id=\"comment".$commentid."replies\">\n";
+        if($showcomments[$commentid]){
+            echo "<ol class=\"child\" id=\"comment".$commentid."replies\" style="display: block !important;">\n";
+        }else{
+            echo "<ol class=\"child\" id=\"comment".$commentid."replies\">\n";
+        }
         while($child = mysql_fetch_array($children)) {
-            write_comment_thread($child['id']);
+            write_comment_thread($child['id'], $showcomments);
         }
         echo "</ol>\n";
     }
 }
 
-function write_comments_of_post($postid) {
+function write_comments_of_post($postid, $showcomments) {
     validate_post_id($postid);
     $top_level = get_top_level_children_of_post($postid);
     if(mysql_num_rows($top_level)>0){
         echo "<ol class=\"toplevel\">\n";
         while($child = mysql_fetch_array($top_level)) {
-            write_comment_thread($child['id']);
+            write_comment_thread($child['id'], $showcomments);
         }
         echo "</ol>";
         return true;
@@ -132,6 +141,16 @@ function write_comments_of_post($postid) {
     }
 }
 
+function get_comment_ancestor_set($commentid) {
+    $parentcomment = get_parent[$commentid];
+    if($parentcomment){
+        $anc = get_comment_ancestor_set($parentcomment);
+        $anc[$commendid]=true;
+    } else {
+        $anc = array($commentid => true);
+    }
+    return $anc;
+}
 
 function validate_comment_id($commentid) {
     if(!is_numeric($commentid)){
