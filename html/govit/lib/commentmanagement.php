@@ -103,12 +103,21 @@ function write_comment_thread($commentid, $showcomments) {
 if(get_num_children($commentid)>0){
 ?>
 |
+<?php if($showcomments[$commentid]){ ?>
+<span class="hideReplies" id="comment<?=$commentid;?>hidereplies" style="display: inline;">
+<a href="javascript:toggleVisibility('<?=$commentid;?>');">Hide Replies</a>
+</span>
+<span class="showReplies" id="comment<?=$commentid;?>showreplies" style="display: none;">
+<a href="javascript:toggleVisibility('<?=$commentid;?>');">Show Replies</a> (<?= get_num_children($commentid); ?>)
+</span>
+<?php}else{?>
 <span class="hideReplies" id="comment<?=$commentid;?>hidereplies">
 <a href="javascript:toggleVisibility('<?=$commentid;?>');">Hide Replies</a>
 </span>
 <span class="showReplies" id="comment<?=$commentid;?>showreplies">
 <a href="javascript:toggleVisibility('<?=$commentid;?>');">Show Replies</a> (<?= get_num_children($commentid); ?>)
 </span>
+?>
 <?php } ?>
 </p>
 </li>
@@ -116,7 +125,7 @@ if(get_num_children($commentid)>0){
     $children = get_children_of_comment($commentid);
     if(mysql_num_rows($children)>0){
         if($showcomments[$commentid]){
-            echo "<ol class=\"child\" id=\"comment".$commentid."replies\" style=\"display: block !important;\">\n";
+            echo "<ol class=\"child\" id=\"comment".$commentid."replies\" style=\"display: block;\">\n";
         }else{
             echo "<ol class=\"child\" id=\"comment".$commentid."replies\">\n";
         }
