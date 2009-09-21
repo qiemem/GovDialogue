@@ -93,32 +93,30 @@ function write_comment_thread($commentid, $showcomments) {
         echo "<li class=\"childcomment\" id=\"comment$commentid\">\n";
     }
 ?>
-<a name="id<?= $commentid ?>"></a>
-<p class="commentText"> <?= $comment['content']; ?> </p>
-<p class="commentCredits">Posted by: <?= $user['firstname'];?> <?= $user['lastname'];?></p>
-<p class="commentRating">Rate this comment: <a href="#" class="insightful">Insightful</a> (3) | <a href="#" class="offtopic">Off topic</a> (1) | <a href="#" class="abusive">Abusive</a> (0)</p>
-<p class="commentReply">
-<a href="#">Reply</a>
-<?php
-if(get_num_children($commentid)>0){
-?>
-|
-<?php if($showcomments[$commentid]){ ?>
-<span class="hideReplies" id="comment<?=$commentid;?>hidereplies" style="display: inline;">
-<a href="javascript:toggleVisibility('<?=$commentid;?>');">Hide Replies</a>
-</span>
-<span class="showReplies" id="comment<?=$commentid;?>showreplies" style="display: none;">
-<a href="javascript:toggleVisibility('<?=$commentid;?>');">Show Replies</a> (<?= get_num_children($commentid); ?>)
-</span>
-<?php }else{ ?>
-<span class="hideReplies" id="comment<?=$commentid;?>hidereplies">
-<a href="javascript:toggleVisibility('<?=$commentid;?>');">Hide Replies</a>
-</span>
-<span class="showReplies" id="comment<?=$commentid;?>showreplies">
-<a href="javascript:toggleVisibility('<?=$commentid;?>');">Show Replies</a> (<?= get_num_children($commentid); ?>)
-</span>
-<?php }} ?>
-</p>
+  <a name="id<?= $commentid ?>"></a>
+  <p class="commentText"> <?= $comment['content']; ?> </p>
+  <p class="commentCredits">Posted by: <?= $user['firstname'];?> <?= $user['lastname'];?></p>
+  <p class="commentRating">Rate this comment: <a href="#" class="insightful">Insightful</a> (3) | <a href="#" class="offtopic">Off topic</a> (1) | <a href="#" class="abusive">Abusive</a> (0)</p>
+  <p class="commentReply">
+    <a href="#">Reply</a>
+    <?php if(get_num_children($commentid)>0){ ?>
+    |
+    <?php if($showcomments[$commentid]){ ?>
+    <span class="hideReplies" id="comment<?=$commentid;?>hidereplies" style="display: inline;">
+      <a href="javascript:toggleVisibility('<?=$commentid;?>');">Hide Replies</a>
+    </span>
+    <span class="showReplies" id="comment<?=$commentid;?>showreplies" style="display: none;">
+      <a href="javascript:toggleVisibility('<?=$commentid;?>');">Show Replies</a> (<?= get_num_children($commentid); ?>)
+    </span>
+    <?php }else{ ?>
+    <span class="hideReplies" id="comment<?=$commentid;?>hidereplies">
+      <a href="javascript:toggleVisibility('<?=$commentid;?>');">Hide Replies</a>
+    </span>
+    <span class="showReplies" id="comment<?=$commentid;?>showreplies">
+      <a href="javascript:toggleVisibility('<?=$commentid;?>');">Show Replies</a> (<?= get_num_children($commentid); ?>)
+    </span>
+    <?php }} ?>
+  </p>
 </li>
 <?php
     $children = get_children_of_comment($commentid);
