@@ -21,7 +21,7 @@ function write_comment_ratings($comment) {
 
 function write_comment_reply_info($comment, $showcomments) {
     $commentid=$comment['id'];
-    echo "<p class=\"commentReply\"> <a href=\"#\">Reply</a>";
+    echo "<p class=\"commentReply\"> <a href=\"#\">Reply</a>\n";
     if(get_num_children($commentid)>0){
         echo "|\n";
         if(array_key_exists($commentid,$showcomments) and $showcomments[$commentid]){
