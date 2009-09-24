@@ -26,7 +26,7 @@ function write_comment_reply_info($comment, $showcomments) {
 
     echo "<p class=\"commentReply\"> <a href=\"#\">Reply</a>\n";
     if(get_num_children($commentid)>0){
-        echo "|\n";
+        echo "\n|\n";
         if(array_key_exists($commentid,$showcomments) and $showcomments[$commentid]){
             echo "<span class=\"hideReplies\" id=\"comment".$commentid."hidereplies\" style=\"display: inline;\">\n";
             echo "<a $toggle_vis>Hide Replies</a>\n";

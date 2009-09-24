@@ -3,7 +3,6 @@
 // viewpost.php
 error_reporting(E_ALL);
 ini_set('display_errors', true);
-ini_set('html_errors', true);
 require_once("header.php");
 require_once("lib/commentdisplay.php");
 printHeader("Title", "Keywords", "Description");
