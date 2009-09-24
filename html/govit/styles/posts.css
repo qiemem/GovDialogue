@@ -77,12 +77,12 @@ div.commentsList ol.child
 {
 	list-style-type: none;
 	margin: 0;
-	margin-left: 60px;
+	margin-left: 40px;
 	padding: 0;
 	display: none; /* hide child replies by default */
 }
 
-div.commentsList ol.child li
+div.commentsList ol.child li.childcomment
 {
 	border: 0;
 	border-left: 1px solid #CCCCCC;

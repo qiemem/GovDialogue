@@ -11,8 +11,6 @@ printHeader("Title", "Keywords", "Description");
 
 ?>
 
-<a href="lib/commentmanagement.php">commentmanagement.php</a>
-
 
 <div class="postTitle">
     <h2>Post title goes here. This is what a post title would be. It might ask a question, no?</h2>
