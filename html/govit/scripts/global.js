@@ -8,6 +8,13 @@ function toggleVisibility(commentID)
 	toggleLayerVisibilityInline("comment" + commentID + "showreplies");
 }
 
+// Reply form toggle wrapper
+function toggleReplyVisibility(commentID)
+{
+	toggleLayerVisibility("comment" + commentID + "replyform");
+}
+
+
 // Toggle element visibility
 function toggleLayerVisibility(layerID)
 {
