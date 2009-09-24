@@ -3,14 +3,21 @@
 require_once('database.php');
 require_once('usermanagement.php');
 
-function add_post($userid, $content) {
+function add_post($userid, $title, $content, $tags) {
     validate_user_id($userid);
     $con = db_connect();
     $content = mysql_real_escape_string($content);
-    $sql = "INSERT INTO posts VALUES user=$userid, content='$content', posttime=NOW()";
+    $tags = format_tags($tags);
+    $sql = "INSERT INTO posts VALUES user=$userid, title=$title, content='$content', posttime=NOW()";
     $success = mysql_query($sql);
     db_close($success);
     return $success;
+}
+
+function format_tags($tags) {
+    $tags = preg_replace("/[^a-zA-Z0-9\s]/", "", $tags);
+    $tags = mysql_real_escape_string();
+    return $tags;
 }
 
 function get_post($postid) {
