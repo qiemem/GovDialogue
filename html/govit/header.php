@@ -58,7 +58,7 @@ function printHeader($page_title, $page_description, $page_keywords)
 				?>
                 <li><a href="/govit/">Home</a></li>
 				<li><a href="/govit/allposts.php">All Posts</a></li>
-				<li><a href="/govit/newpost.php">Make New Post</a></li>
+				<li><a href="/govit/makenewpost.php">Make New Post</a></li>
                 <li><a href="/govit/profile.php">Your Profile</a></li>
 				<li><a href="/govit/logout.php">Logout</a></li>
 				<li><a href="/govit/feedback.php">Feedback</a></li>
@@ -69,7 +69,7 @@ function printHeader($page_title, $page_description, $page_keywords)
 			?>
                 <li><a href="/govit/">Home</a></li>
 				<li><a href="/govit/allposts.php">All Posts</a></li>
-				<li><a href="/govit/newpost.php">Make New Post</a></li>
+				<li><a href="/govit/makenewpost.php">Make New Post</a></li>
 				<li><a href="/govit/join.php">Join</a></li>
 				<li><a href="/govit/login.php">Login</a></li>
 				<li><a href="/govit/feedback.php">Feedback</a></li>
