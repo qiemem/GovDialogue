@@ -5,11 +5,16 @@ error_reporting(E_ALL);
 ini_set('display_errors', true);
 require_once("header.php");
 require_once("lib/commentdisplay.php");
+require_once("lib/postdisplay.php");
 printHeader("Title", "Keywords", "Description");
 
 
-?>
+$post_id = null;
+if (isset($_GET
 
+display_post($post_id);
+
+?>
 
 <div class="postTitle">
     <h2>Post title goes here. This is what a post title would be. It might ask a question, no?</h2>
