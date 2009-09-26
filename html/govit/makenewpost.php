@@ -26,7 +26,7 @@ if (isUserLoggedIn())
     <p><textarea name="content" id="content" rows="15" cols="70">Write post here</textarea></p>
     
     <p>Tags (comma separated: tag one, tag two, etc.)</p>
-    <p><input type="tags" name="title" size="50" /></p>
+    <p><input type="tags" name="tags" size="50" /></p>
     
     <p>
         <input type="submit" value="Submit" name="submitted"/>

@@ -3,11 +3,11 @@
 
 input, textarea
 {
-	border: 1px solid #555555;
+	border: 1px solid #cccccc;
 	color: #555555;
-	padding: 3px;
+	padding: 5px;
 	font-family: Georgia, "Times New Roman", Times, serif !important;
-	font-size: 14px;
+	font-size: 18px;
 	text-align: left;
 	vertical-align: top;
 }
