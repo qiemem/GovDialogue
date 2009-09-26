@@ -23,8 +23,7 @@ function write_comment_reply_info($comment, $showcomments) {
     $commentid=$comment['id'];
 
     $toggle_vis = "href=\"javascript:void(0);\" onclick=\"toggleVisibility('$commentid');\"";
-
-    echo "<p class=\"commentReply\"> <a href=\"#\">Reply</a>\n";
+    echo "<p class=\"commentReply\"> <a href=\"javascript:void(0);\" onclick=\"javascript:toggleReplyVisibility('$commentid');\">Reply</a><a name=\"id$commentid\"></a></p>\n";
     if(get_num_children($commentid)>0){
         echo "\n|\n";
         if(array_key_exists($commentid,$showcomments) and $showcomments[$commentid]){
@@ -90,9 +89,10 @@ function write_comment_thread($commentid, $showcomments) {
     write_comment_credits($comment);
     write_comment_ratings($comment);
     write_comment_reply_info($comment,$showcomments);
+    write_comment_reply_form($comment);
     write_comment_replies($comment,$showcomments);
     write_comment_footer($comment);
-    
+        
 }
 
 function write_comments_of_post($postid, $showcomments) {
@@ -108,4 +108,22 @@ function write_comments_of_post($postid, $showcomments) {
     }else{
         return false;
     }
+}
+
+function write_comment_reply_form($comment) {
+    $commentid = $comment['id'];
+    echo "<!-- Reply Form -->\n";
+    echo "<li class=\"childcomment replyform\" id=\"comment".$commentid."replyform\">\n";
+                        
+    echo "<!-- User logged in -->\n";
+    echo "<form name=\"replyForm_$commentid\" action=\"POST\" method=\"reply.php\">\n";
+                            
+    echo "<p class=\"replyCaption\">Enter your reply here:</p>\n";
+    echo "<textarea name=\"replyContent_$commentid\" class=\"commentReplyForm\" id=\"replyContent_$commentid\" cols=\"40\" rows=\"8\">Write your comment here.</textarea>\n";
+                            
+    echo "<p class=\"replySubmit\"><input type=\"submit\" value=\"Post\" /></p>\n";
+    echo "</form>\n";
+    echo "<!-- User not logged in -->\n";
+    echo "</li>\n";
+    echo "<!-- End Reply Form -->\n";
 }
