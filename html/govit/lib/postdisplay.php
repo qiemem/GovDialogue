@@ -28,4 +28,14 @@ function write_post_tags($tags) {
         echo "<a href=\"#\">$tag</a> ";
     }
 }
+
+function list_posts() {
+    $postids = get_all_post_ids();
+    echo "<ul class=\"allPostsList\">";
+    foreach( $postids as $postid ){
+        $title = get_post($postid)['title'];
+        echo "<li class=\"allPostsItem\" id=\"$postid\"><a href=\"viewpost.php?postid=$postid\">$title</a></li>";
+    }
+    echo "</ul>";
+}
 ?>
