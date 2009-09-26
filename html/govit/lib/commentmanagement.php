@@ -23,7 +23,7 @@ function add_reply_to_post($userid, $postid, $content){
 
     $con = db_connect();
     $content = mysql_real_escape_string($content);
-    $sql = "INSERT INTO comments VALUES user=$userid, postparent=$postid, content='$content', posttime=NOW()";
+    $sql = "INSERT INTO comments (user, postparent, content, posttime) VALUES ($userid, $postid, '$content', NOW())";
     $success = mysql_query($sql);
     db_close($success);
     return $success;
@@ -35,7 +35,7 @@ function add_reply_to_comment($userid, $commentid, $content){
     $con = db_connect();
     $content = mysql_real_escape_string($content);
     $postid = post_parent($commentid);
-    $sql = "INSERT INTO comments VALUES user=$userid, postparent=$postid, parent=$commentid, content='$content', posttime=NOW()";
+    $sql = "INSERT INTO comments (user, postparent, parent, content, posttime) VALUES ($userid, $postid, $commentid, '$content', NOW())";
     $success = mysql_query($sql);
     db_close($success);
     return $success;
