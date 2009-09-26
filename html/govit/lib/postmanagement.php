@@ -10,7 +10,7 @@ function add_post($userid, $title, $content, $tags) {
     $tags = format_tags($tags);
     $sql = "INSERT INTO posts VALUES user=$userid, title=$title, content='$content', posttime=NOW()";
     $success = mysql_query($sql);
-    db_close($success);
+    db_close($con);
     return $success;
 }
 
