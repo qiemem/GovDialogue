@@ -32,8 +32,10 @@ function write_post_tags($tags) {
 function list_posts() {
     $postids = get_all_post_ids();
     echo "<ul class=\"allPostsList\">";
-    foreach( $postids as $postid ){
-        $title = get_post($postid)['title'];
+    while( $row = mysql_fetch_array($postids) ){
+        $postid = $row['id'];
+        $post = get_post($postid);
+        $title = $post['title'];
         echo "<li class=\"allPostsItem\" id=\"$postid\"><a href=\"viewpost.php?postid=$postid\">$title</a></li>";
     }
     echo "</ul>";
