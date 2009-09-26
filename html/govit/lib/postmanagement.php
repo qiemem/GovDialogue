@@ -16,7 +16,7 @@ function add_post($userid, $title, $content, $tags) {
 
 function format_tags($tags) {
     $tags = preg_replace("/[^a-zA-Z0-9\s]/", "", $tags);
-    $tags = mysql_real_escape_string();
+    $tags = mysql_real_escape_string($tags);
     return $tags;
 }
 
