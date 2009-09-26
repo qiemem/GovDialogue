@@ -8,7 +8,7 @@ function add_post($userid, $title, $content, $tags) {
     $con = db_connect();
     $content = mysql_real_escape_string($content);
     $tags = format_tags($tags);
-    $sql = "INSERT INTO posts VALUES user=$userid, title=$title, content='$content', posttime=NOW()";
+    $sql = "INSERT INTO posts (user, title, content, tags, posttime) VALUES ($userid, '$title', '$content', '$tags', NOW())";
     $success = mysql_query($sql);
     db_close($con);
     return $success;
