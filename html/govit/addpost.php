@@ -37,7 +37,7 @@ if (!$user_canpost) { $errors[] = "You do not have sufficient permissions to add
 
 if (!inError())
 {
-	if (add_post($user_id, $postTitle, $postTitle, $postTags))
+	if (add_post($user_id, $postTitle, $postContent, $postTags))
 	{
 		echo("Your post was successfully added!");
 		// TODO: add link to view new post
