@@ -12,3 +12,7 @@ input, textarea
 	vertical-align: top;
 }
 
+form#newPostForm input, textarea
+{
+	width: 500px;
+}
