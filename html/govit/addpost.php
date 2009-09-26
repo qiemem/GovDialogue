@@ -41,6 +41,7 @@ if (!inError())
 	else
 	{
 		$errors[] = "There was an unknown error adding your post";
+		echo("ERROR: add_post($user_id, $_POST['title'], $_POST['content'], $_POST['tags'])");
 	}
 }
 
