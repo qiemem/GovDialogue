@@ -9,10 +9,13 @@ session_start();
 
 function isUserLoggedIn() { return isset($_SESSION['user']); }
 
+
+// **The following lines should correspond to create_session() lib/sessionmanagement.php
 $user_id = "";
 $user_firstname = "";
 $user_lastname = "";
 $user_email = "";
+$user_canpost = "";
 
 if (isset($_SESSION['user']))
 {
@@ -20,6 +23,7 @@ if (isset($_SESSION['user']))
 	$user_firstname = $_SESSION['user']['firstname'];
 	$user_lastname = $_SESSION['user']['lastname'];
 	$user_email = $_SESSION['user']['email'];
+	$user_canpost = $_SESSION['user']['email'];
 }
 
 

@@ -2,6 +2,7 @@
 
 require_once("usermanagement.php");
 
+// Should correspond with session variables in header.php
 function create_session($id) {
     $row = get_user($id);
     if($row) {
