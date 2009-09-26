@@ -9,11 +9,7 @@ require_once("lib/postdisplay.php");
 require_once("header.php");
 printHeader("Add post", "Keywords", "Description");
 
-?>
-
-All posts
-
-<?php
+list_posts();
 
 require_once("footer.php");
 
