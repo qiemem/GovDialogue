@@ -93,9 +93,17 @@ function get_comment_ancestor_set($commentid) {
     return $anc;
 }
 
+function post_has_comments($postid) {
+    $top_level = get_top_level_children_of_post($postid);
+    return mysql_num_rows($top_level)>0;
+}
+    
+
 function validate_comment_id($commentid) {
     if(!is_numeric($commentid)){
         throw new Exception($commentid . " is not a valid comment id.");
     }
 }
+
+
 ?>
