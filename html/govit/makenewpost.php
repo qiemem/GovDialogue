@@ -24,11 +24,9 @@ if (isUserLoggedIn())
     
     <p><textarea name="content" id="content" rows="15" cols="70">Write your post here</textarea></p>
     
-    <p><input type="tags" name="tags" size="50" />Tags: tagone tagtwo etc.</p>
+    <p><input type="tags" name="tags" size="50" /></p>
     
-    <p>
-        <input type="submit" id="submitButton" value="Submit" name="submitted"/>
-    </p>
+    <p><input type="submit" id="submitButton" value="Add Post" name="submitted"/></p>
 
 </form>
 
