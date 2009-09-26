@@ -25,7 +25,7 @@ function write_comment_reply_info($comment, $showcomments) {
     $toggle_vis = "href=\"javascript:void(0);\" onclick=\"toggleVisibility('$commentid');\"";
     echo "<p class=\"commentReply\"> <a href=\"javascript:void(0);\" onclick=\"javascript:toggleReplyVisibility('$commentid');\">Reply</a><a name=\"id$commentid\"></a></p>\n";
     if(get_num_children($commentid)>0){
-        echo "\n|\n";
+        echo "|\n";
         if(array_key_exists($commentid,$showcomments) and $showcomments[$commentid]){
             echo "<span class=\"hideReplies\" id=\"comment".$commentid."hidereplies\" style=\"display: inline;\">\n";
             echo "<a $toggle_vis>Hide Replies</a>\n";
@@ -65,7 +65,7 @@ function write_comment_replies($comment, $showcomments) {
 
 function write_comment_header($comment) {
     $commentid = $comment['id'];
-    echo "<!-- Begin comment $commentid -->\n";
+    echo "<!-- #$commentid -->\n";
     if(!$comment['parent']){
         echo "<li class=\"toplevelcomment\" id=\"comment$commentid\">\n";
     }else{
@@ -76,8 +76,8 @@ function write_comment_header($comment) {
 function write_comment_footer($comment) {
     $commentid = $comment['id'];
     echo "<a name=\"id$commentid\"></a>\n";
-    echo "</p>\n</li>\n";
-    echo "<!-- End comment $commentid -->\n";
+    echo "</li>\n";
+    echo "<!-- /#$commentid -->\n";
 }
 
 function write_comment_thread($commentid, $showcomments) {
@@ -89,9 +89,9 @@ function write_comment_thread($commentid, $showcomments) {
     write_comment_credits($comment);
     write_comment_ratings($comment);
     write_comment_reply_info($comment,$showcomments);
+    write_comment_footer($comment);
     write_comment_reply_form($comment);
     write_comment_replies($comment,$showcomments);
-    write_comment_footer($comment);
         
 }
 
@@ -113,10 +113,10 @@ function write_comments_of_post($postid, $showcomments) {
 function write_comment_reply_form($comment) {
     $commentid = $comment['id'];
     echo "<!-- Reply Form -->\n";
-    echo "<li class=\"childcomment replyform\" id=\"comment".$commentid."replyform\">\n";
+    echo "<li class=\"replyform\" id=\"comment".$commentid."replyform\">\n";
                         
     echo "<!-- User logged in -->\n";
-    echo "<form name=\"replyForm_$commentid\" action=\"POST\" method=\"reply.php\">\n";
+    echo "<form name=\"replyForm_$commentid\" action=\"reply.php\" method=\"post\">\n";
                             
     echo "<p class=\"replyCaption\">Enter your reply here:</p>\n";
     echo "<textarea name=\"replyContent_$commentid\" class=\"commentReplyForm\" id=\"replyContent_$commentid\" cols=\"40\" rows=\"8\">Write your comment here.</textarea>\n";

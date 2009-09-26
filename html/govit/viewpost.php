@@ -14,7 +14,7 @@ if (isset($_GET['postid'])) {
     $post_id = $_GET['postid'];
     display_post($post_id);
 	
-	echo("<p class=\"postReplyLink\"><a href=\"#\">Add a new comment/a></p>");
+	echo("<p class=\"postReplyLink\"><a href=\"#\">Add a new comment</a></p>");
 	
 	?>
     
@@ -32,6 +32,7 @@ if (isset($_GET['postid'])) {
 		echo "</div>\n";
 		echo "<div class=\"commentsList\">\n";
 		write_comments_of_post($post_id, array());
+                echo "</div>\n";
 	}
 }else{
     echo "You didn't specify a post.\n";
