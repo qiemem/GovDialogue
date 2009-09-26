@@ -20,16 +20,14 @@ if (isUserLoggedIn())
 
 <form name="newPostForm" id="newPostForm" method="POST" action="addpost.php">
 
-    <p>Title:</p>
-    <p><input type="text" name="title" size="50" /></p>
+    <p><input type="text" name="title" size="50" value="Post title" /></p>
     
-    <p><textarea name="content" id="content" rows="15" cols="70">Write post here</textarea></p>
+    <p><textarea name="content" id="content" rows="15" cols="70">Write your post here</textarea></p>
     
-    <p>Tags (comma separated: tag one, tag two, etc.)</p>
-    <p><input type="tags" name="tags" size="50" /></p>
+    <p><input type="tags" name="tags" size="50" />Tags: tagone tagtwo etc.</p>
     
     <p>
-        <input type="submit" value="Submit" name="submitted"/>
+        <input type="submit" id="submitButton" value="Submit" name="submitted"/>
     </p>
 
 </form>

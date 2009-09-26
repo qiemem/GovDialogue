@@ -17,23 +17,27 @@ function inError(){
 
 // Validate fields
 // TODO: add full form validation
+
+
 if (!isUserLoggedIn()) { $errors[] = "You must be logged in to post."; } // isUserLoggedIn() lives in header.php
 if (!isset($_POST['submitted'])) { $errors[] = "No form data was received."; }
-if (!isset($_POST['title']) || strlen($_POST['title']) <= 0) { $errors[] = "You did not enter a title for your post."; }
+if (!isset($_POST['title'] || $_POST['title'] == "Post title") || strlen($_POST['title']) <= 0) { $errors[] = "You did not enter a title for your post."; }
 if (strlen($_POST['title']) > 500) { $errors[] = "Your title must be less that 500 characters."; }
-if (!isset($_POST['content']) || strlen($_POST['content']) <= 0) { $errors[] = "You did not enter any content for your post."; }
+if (!isset($_POST['content'] || $_POST['content'] == "Write your post here") || strlen($_POST['content']) <= 0) { $errors[] = "You did not enter any content for your post."; }
 if (strlen($_POST['content']) > 3000) { $errors[] = "The content of your post must be less than 3,000 characters."; }
 
-////////////
-echo("Strlen post: " . strlen($_POST['content']));
+$postTitle = $_POST['title'];
+$postContent = $_POST['content'];
+$postTags = $_POST['tags'];
 
+if ($postTags == "Tags: tagone tagtwo etc.";) { $postTags = ""; }
 
 // Make sure the user has sufficient permissions to post
 if (!$user_canpost) { $errors[] = "You do not have sufficient permissions to add new posts."; }
 
 if (!inError())
 {
-	if (add_post($user_id, $_POST['title'], $_POST['content'], $_POST['tags']))
+	if (add_post($user_id, $postTitle, $postTitle, $postTags))
 	{
 		echo("Your post was successfully added!");
 		// TODO: add link to view new post

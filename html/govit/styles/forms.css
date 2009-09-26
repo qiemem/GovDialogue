@@ -12,7 +12,12 @@ input, textarea
 	vertical-align: top;
 }
 
-form#newPostForm input, textarea
+form#newPostForm input, form#newPostForm textarea
 {
-	width: 500px;
+	width: 600px;
+}
+
+form#newPostForm input#submitButton
+{
+	width: auto;
 }
