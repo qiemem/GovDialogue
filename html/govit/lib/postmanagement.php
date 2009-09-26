@@ -6,6 +6,7 @@ require_once('usermanagement.php');
 function add_post($userid, $title, $content, $tags) {
     validate_user_id($userid);
     $con = db_connect();
+    $title = mysql_real_escape_string($title);
     $content = mysql_real_escape_string($content);
     $tags = format_tags($tags);
     $sql = "INSERT INTO posts (user, title, content, tags, posttime) VALUES ($userid, '$title', '$content', '$tags', NOW())";

@@ -13,7 +13,6 @@ function add_user($email, $password, $firstname, $lastname, $canpost) {
     $valkey = gen_validation_key($email);
     $sql = "INSERT INTO users (email, password, validated, validationkey, joindate, firstname, lastname, canpost)
 VALUES ('$email', PASSWORD('$password'), 0, '$valkey', CURDATE(), '$firstname', '$lastname', $canpost_entry)";
-    echo $sql;
     $success = mysql_query($sql);
     db_close($dbcon);
     return $success;
@@ -29,7 +28,6 @@ function user_id($email) {
     $con = db_connect();
     $email = mysql_real_escape_string($email);
     $sql = "SELECT id FROM users WHERE email='$email'";
-    echo $sql;
     $result = mysql_query("SELECT id FROM users WHERE email='$email'");
     if(mysql_num_rows($result)>0){
         $id = mysql_result($result, 0);
