@@ -39,7 +39,7 @@ else
 				}
 				else
 				{
-					echo("Invalid login.");
+					echo("The email address and password you entered don't match our records. Please go back and try again.");
 				}
 			}	
 	}
