@@ -1,0 +1,11 @@
+@charset "UTF-8";
+/* CSS Document */
+
+input, textarea
+{
+	font-family: Georgia, "Times New Roman", Times, serif !important;
+	color: #555555;
+	font-size: 14px;
+	text-align: left;
+	vertical-align: top;
+}
