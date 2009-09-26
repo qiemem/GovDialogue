@@ -29,7 +29,7 @@ function inError(){
 	return count($errors) > 0;
 }
 
-if ($user_isLoggedIn)
+if (isUserLoggedIn()) // lives in header.php
 {
 	// User is already logged in; display error
 	echo("You're already logged in!");
