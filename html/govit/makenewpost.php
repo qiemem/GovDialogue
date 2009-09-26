@@ -18,7 +18,7 @@ if (isUserLoggedIn())
 
 ?>
 
-<form name="newPostForm" method="POST" action="addpost.php">
+<form name="newPostForm" id="newPostForm" method="POST" action="addpost.php">
 
     <p>Title:</p>
     <p><input type="text" name="title" size="50" /></p>
