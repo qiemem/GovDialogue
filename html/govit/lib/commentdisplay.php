@@ -23,7 +23,7 @@ function write_comment_reply_info($comment, $showcomments) {
     $commentid=$comment['id'];
 
     $toggle_vis = "href=\"javascript:void(0);\" onclick=\"toggleVisibility('$commentid');\"";
-    echo "<p class=\"commentReply\"><a href=\"javascript:void(0);\" onclick=\"javascript:toggleReplyVisibility('$commentid');\">Reply</a></p>\n";
+    echo "<p class=\"commentReply\"><a href=\"javascript:void(0);\" onclick=\"javascript:toggleReplyVisibility('$commentid');\">Reply</a>\n";
     if(get_num_children($commentid)>0){
         echo "|\n";
         if(array_key_exists($commentid,$showcomments) and $showcomments[$commentid]){
@@ -41,6 +41,7 @@ function write_comment_reply_info($comment, $showcomments) {
             echo "<a $toggle_vis>Show Replies</a> (".get_num_children($commentid).")\n";
             echo "</span>\n";
         }
+		echo("</p>");
     }
 }
 
@@ -76,7 +77,6 @@ function write_comment_header($comment) {
 
 function write_comment_footer($comment) {
     $commentid = $comment['id'];
-    echo "<a name=\"id$commentid\"></a>\n";
     echo "</li>\n";
     echo "<!-- /#$commentid -->\n";
 }
