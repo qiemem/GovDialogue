@@ -23,7 +23,7 @@ function write_comment_reply_info($comment, $showcomments) {
     $commentid=$comment['id'];
 
     $toggle_vis = "href=\"javascript:void(0);\" onclick=\"toggleVisibility('$commentid');\"";
-    echo "<p class=\"commentReply\"><a href=\"javascript:void(0);\" onclick=\"javascript:toggleReplyVisibility('$commentid');\">Reply</a>\n";
+    echo "<p class=\"commentReply\"><a href=\"javascript:void(0);\" onclick=\"javascript:toggleCommentReplyVisibility('$commentid');\">Reply</a>\n";
     if(get_num_children($commentid)>0){
         echo "|\n";
         if(array_key_exists($commentid,$showcomments) and $showcomments[$commentid]){

@@ -44,7 +44,13 @@ function get_comment_id($userid, $postid, $parentid, $content) {
     validate_user_id($userid);
     $content = mysql_real_escape_string($content);
     $con = db_connect();
-    $sql = "SELECT id FROM comments WHERE user=$userid AND content='$content' AND postparent=$postid AND parent=$parentid";
+    $sql = "SELECT id FROM comments WHERE user=$userid AND content='$content' AND postparent=$postid ORDER BY posttime DESC";
+    if($parentid===null){
+        $sql = $sql." AND parent IS NULL";
+    } else {
+        $sql = $sql." AND parent=$parentid";
+    }
+    echo $sql;
     $result = mysql_query($sql);
     if(mysql_num_rows($result)>0){
         $id = mysql_result($result, 0);
@@ -71,7 +77,7 @@ function get_comment($commentid) {
 function get_children_of_comment($commentid) {
     validate_comment_id($commentid);
     $con = db_connect();
-    $sql = "SELECT * FROM comments WHERE parent=$commentid";
+    $sql = "SELECT * FROM comments WHERE parent=$commentid ORDER BY posttime DESC";
     $result = mysql_query($sql);
     db_close($con);
     return $result;
@@ -90,7 +96,7 @@ function get_parent($commentid) {
 function get_top_level_children_of_post($postid) {
     validate_post_id($postid);
     $con = db_connect();
-    $sql = "SELECT * FROM comments WHERE postparent=$postid AND parent IS NULL";
+    $sql = "SELECT * FROM comments WHERE postparent=$postid AND parent IS NULL ORDER BY posttime DESC";
     $result = mysql_query($sql);
     db_close($con);
     return $result;

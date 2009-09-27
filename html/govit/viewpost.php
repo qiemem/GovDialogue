@@ -13,15 +13,16 @@ printHeader("Title", "Keywords", "Description");
 $post_id = null;
 if (isset($_GET['postid'])) {
     $post_id = $_GET['postid'];
-    if(isset($_GET['commentid'])) {
+    if(isset($_GET['commentid']) and $_GET['commentid']!='') {
         $show_comments = get_comment_ancestor_set($_GET['commentid']);
     }else{
         $show_comments = array();
     }
 
-    display_post($post_id);	
-    echo("<p class=\"postReplyLink\"><a href=\"#\">Add a new comment</a></p>");
-    echo "<p class=\"postReplyCommentForm\">";
+    display_post($post_id);
+    echo "<p class=\"postReplyLink\"><a href=\"javascript:void(0);\" onclick=\"javascript:togglePostReplyVisibility('$post_id');\">Add a new comment</a></p>\n";
+    //echo "<p class=\"postReplyCommentForm\">";
+    write_post_reply_form($post_id);
     // Only display comments header if post has comments
     if(post_has_comments($post_id)) {
         echo "<div class=\"commentsHeader\">\n";

@@ -29,14 +29,13 @@ function write_post_tags($tags) {
     }
 }
 
-function write_post_reply_form($post) {
-    $postid = $post['id'];
+function write_post_reply_form($postid) {
     echo "<!-- Reply Form -->\n";
-    echo "<li class=\"replyform\" id=\"comment".$postid."replyform\">\n";                        
+    echo "<li class=\"replyform\" id=\"post".$postid."replyform\">\n";                        
     echo "<!-- User logged in -->\n";
-    echo "<form name=\"postReplyForm_$commentid\" action=\"reply.php\" method=\"post\">\n";
+    echo "<form name=\"postReplyForm_$postid\" action=\"reply.php\" method=\"post\">\n";
     echo "<p class=\"replyCaption\">Enter your reply here:</p>\n";
-    echo "<textarea name=\"replyContent\" class=\"commentReplyForm\" id=\"postReplyContent_$commentid\" cols=\"40\" rows=\"8\" onfocus=\"if(this.value=='Write your comment here'){this.value='';}\" onblur=\"if(this.value==''){this.value='Write your comment here';}\">Write your comment here</textarea>\n";
+    echo "<textarea name=\"replyContent\" class=\"commentReplyForm\" id=\"postReplyContent_$postid\" cols=\"40\" rows=\"8\" onfocus=\"if(this.value=='Write your comment here'){this.value='';}\" onblur=\"if(this.value==''){this.value='Write your comment here';}\">Write your comment here</textarea>\n";
     echo "<input name=\"parentID\" type=\"hidden\" value=\"$postid\" />\n";
     echo "<input name=\"parentType\" type=\"hidden\" value=\"post\" />\n";
     echo "<p class=\"replySubmit\"><input type=\"submit\" value=\"Post\" /></p>\n";

@@ -3,15 +3,19 @@
 // Toggle wrapper
 function toggleVisibility(commentID)
 {
-	toggleLayerVisibility("comment" + commentID + "replies");
-	toggleLayerVisibilityInline("comment" + commentID + "hidereplies");
-	toggleLayerVisibilityInline("comment" + commentID + "showreplies");
+    toggleLayerVisibility("comment" + commentID + "replies");
+    toggleLayerVisibilityInline("comment" + commentID + "hidereplies");
+    toggleLayerVisibilityInline("comment" + commentID + "showreplies");
 }
 
 // Reply form toggle wrapper
-function toggleReplyVisibility(commentID)
+function toggleCommentReplyVisibility(commentID)
 {
-	toggleLayerVisibility("comment" + commentID + "replyform");
+    toggleLayerVisibility("comment" + commentID + "replyform");
+}
+
+function togglePostReplyVisibility(postID) {
+    toggleLayerVisibility("post" + postID + "replyform");
 }
 
 

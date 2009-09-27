@@ -41,13 +41,12 @@ if (inError()) {
         $commentid=add_reply_to_post($user_id, $_POST['parentID'], $_POST['replyContent']);
         $post = get_post($_POST['parentID']);
         $postid = $post['id'];
-    }
-    else if ($_POST['parentType'] == "comment") {
+    } else if ($_POST['parentType'] == "comment") {
         $commentid=add_reply_to_comment($user_id, $_POST['parentID'], $_POST['replyContent']);
         $comment = get_comment($_POST['parentID']);
         $postid = $comment['postparent'];
     }
-    echo "Post succesful!";
+    echo "Post successful!";
     $domain = $_SERVER['HTTP_HOST'];
     echo $commentid;
     header("Location: http://$domain/govit/viewpost.php?postid=$postid&commentid=$commentid#$commentid");
