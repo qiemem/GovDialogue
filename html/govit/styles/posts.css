@@ -90,10 +90,11 @@ div.commentsList ol.child li.childcomment
 	padding: 0 10px;
 }
 
-div.commentsList ol.child li.replyform
+li.replyform
 {
 	display: none;
 	border: 0;
+	padding: 10px;
 }
 
 p.commentText
