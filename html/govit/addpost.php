@@ -11,8 +11,8 @@ printHeader("Add post", "Keywords", "Description");
 
 // Start error processing
 function inError(){
-	global $errors;
-	return count($errors) > 0;
+    global $errors;
+    return count($errors) > 0;
 }
 
 // Validate fields
@@ -35,29 +35,26 @@ if ($postTags == "Tags: tagone tagtwo etc.") { $postTags = ""; }
 // Make sure the user has sufficient permissions to post
 if (!$user_canpost) { $errors[] = "You do not have sufficient permissions to add new posts."; }
 
-if (!inError())
-{
-	if (add_post($user_id, $postTitle, $postContent, $postTags))
-	{
-		echo("Your post was successfully added!");
-		// TODO: add link to view new post
-	}
-	else
-	{
-		$errors[] = "There was an unknown error adding your post";
-		echo("ERROR: add_post(" . $user_id . ", " . $_POST['title'] . ", " . $_POST['content'] . ", " . $_POST['tags'] . ")");
-	}
+if (!inError()) {
+    if (add_post($user_id, $postTitle, $postContent, $postTags)) {
+        $postid = get_post_id($user_id, $postTitle, $postContent);
+        echo("Your post was successfully added! \n");
+        echo "<a href=\"viewpost?postid.php=$postid\">Go to post.</a>\n";
+    }
+    else {
+        $errors[] = "There was an unknown error adding your post";
+        echo("ERROR: add_post(" . $user_id . ", " . $_POST['title'] . ", " . $_POST['content'] . ", " . $_POST['tags'] . ")");
+    }
 }
 
 
 
-if (inError())
-{
-	echo("<p>There were some problems with your form. Please go back and try again.</p><br /><br />");
-	
-	// Display error messages
-	// TODO: change to error handler function
-	write_errors($errors); // lives in lib/errormanagement.php
+if (inError()) {
+    echo("<p>There were some problems with your form. Please go back and try again.</p><br /><br />");
+    
+    // Display error messages
+    // TODO: change to error handler function
+    write_errors($errors); // lives in lib/errormanagement.php
 }
 
 require_once("footer.php");

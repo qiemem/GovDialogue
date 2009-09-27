@@ -22,6 +22,22 @@ function get_all_post_ids() {
     return $postids;
 }
 
+function get_post_id($userid, $title, $content) {
+    validate_user_id($userid);
+    $content = mysql_real_escape_string($content);
+    $title = mysql_real_escape_string($title);
+    $con = db_connect();
+    $sql = "SELECT id FROM posts WHERE user=$userid AND content='$content' AND title='$title' ORDER BY posttime DESC";
+    $result = mysql_query($sql);
+    if(mysql_num_rows($result)>0){
+        $id = mysql_result($result, 0);
+    }else{
+        $id = null;
+    }
+    db_close($con);
+    return $id;
+}
+
 function format_tags($tags) {
     $tags = preg_replace("/[^a-zA-Z0-9\s]/", "", $tags);
     $tags = mysql_real_escape_string($tags);
