@@ -1,7 +1,9 @@
 <?php
+ob_start(); // for redirect
 
 // index.php
 require_once("lib/commentmanagement.php");
+require_once("lib/postmanagement.php");
 require_once("header.php");
 printHeader("Title", "Keywords", "Description");
 
@@ -14,9 +16,9 @@ if (!isUserLoggedIn()) { $errors['You must be logged in to reply.']; }
 if (!isset($_POST['parentID']) or !isset($_POST['parentType'])) { 
     $errors[] = 'I can\'t tell what you\'re replying to.';
 }
-if (!isset($_POST['replyText']) || strlen($_POST['replyText']) <= 1) { 
+if (!isset($_POST['replyContent']) || strlen($_POST['replyContent']) <= 1) { 
     $errors[]='Your reply was empty.';
-} else if (strlen($_POST['replyText']) > 1000) { 
+} else if (strlen($_POST['replyContent']) > 1000) { 
     $errors[]='Your reply must be less than 1000 characters.'; 
 }
 
@@ -36,14 +38,23 @@ if (inError()) {
     
     // Determine whether it's supposed to post a reply to a post or a comment
     if ($_POST['parentType'] == "post") {
-        add_reply_to_post($userid, $_POST['parentID'], $_POST['replyText']);
+        $commentid=add_reply_to_post($user_id, $_POST['parentID'], $_POST['replyContent']);
+        $post = get_post($_POST['parentID']);
+        $postid = $post['id'];
     }
-    else {
-        add_reply_to_comment($userid, $_POST['parentID'], $_POST['replyText']);
-    }	
+    else if ($_POST['parentType'] == "comment") {
+        $commentid=add_reply_to_comment($user_id, $_POST['parentID'], $_POST['replyContent']);
+        $comment = get_comment($_POST['parentID']);
+        $postid = $comment['postparent'];
+    }
+    echo "Post succesful!";
+    $domain = $_SERVER['HTTP_HOST'];
+    echo $commentid;
+    header("Location: http://$domain/govit/viewpost.php?postid=$postid&commentid=$commentid#$commentid");
+    exit();   
 }
 
 
 require_once("footer.php");
-
+ob_flush(); //for redirect
 ?>

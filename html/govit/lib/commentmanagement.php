@@ -20,13 +20,12 @@ function post_parent($commentid){
 function add_reply_to_post($userid, $postid, $content){
     validate_user_id($userid);
     validate_post_id($postid);
-
     $con = db_connect();
     $content = mysql_real_escape_string($content);
     $sql = "INSERT INTO comments (user, postparent, content, posttime) VALUES ($userid, $postid, '$content', NOW())";
     $success = mysql_query($sql);
-    db_close($success);
-    return $success;
+    db_close($con);
+    return get_user_comment_id_with_content($userid, $content);
 }
 
 function add_reply_to_comment($userid, $commentid, $content){
@@ -37,8 +36,23 @@ function add_reply_to_comment($userid, $commentid, $content){
     $postid = post_parent($commentid);
     $sql = "INSERT INTO comments (user, postparent, parent, content, posttime) VALUES ($userid, $postid, $commentid, '$content', NOW())";
     $success = mysql_query($sql);
-    db_close($success);
-    return $success;
+    db_close($con);
+    return get_user_comment_id_with_content($userid, $content);
+}
+
+function get_user_comment_id_with_content($userid, $content) {
+    validate_user_id($userid);
+    $content = mysql_real_escape_string($content);
+    $con = db_connect();
+    $sql = "SELECT id FROM comments WHERE user=$userid AND content='$content'";
+    $result = mysql_query($sql);
+    if(mysql_num_rows($result)>0){
+        $id = mysql_result($result, 0);
+    }else{
+        $id = null;
+    }
+    db_close($con);
+    return $id;
 }
 
 function get_comment($commentid) {
