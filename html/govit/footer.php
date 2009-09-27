@@ -5,16 +5,14 @@
 ?>
 
 
-		</div><!-- /.content -->
-		
-		<div class="footer">
-		
-		This is Govit. <a href="http://dev.morninj.com/govit/">http://dev.morninj.com/govit/</a>
-		
-		</div><!-- /.footer -->
-		
-	</div><!-- /.container -->
-
+    </div><!-- /.content -->
+    
+    <div class="footer">
+        <div class="footerContainer">
+    This is Govit. <a href="http://dev.morninj.com/govit/">http://dev.morninj.com/govit/</a>
+        </div><!-- /.footerContainer -->
+    </div><!-- /.footer -->
+    
 <!-- Google analytics -->
 <script type="text/javascript">
 var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
