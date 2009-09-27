@@ -44,13 +44,13 @@ function get_comment_id($userid, $postid, $parentid, $content) {
     validate_user_id($userid);
     $content = mysql_real_escape_string($content);
     $con = db_connect();
-    $sql = "SELECT id FROM comments WHERE user=$userid AND content='$content' AND postparent=$postid ORDER BY posttime DESC";
+    $sql = "SELECT id FROM comments WHERE user=$userid AND content='$content' AND postparent=$postid";
     if($parentid===null){
         $sql = $sql." AND parent IS NULL";
     } else {
         $sql = $sql." AND parent=$parentid";
     }
-    echo $sql;
+    $sql = $sql." ORDER BY posttime DESC";
     $result = mysql_query($sql);
     if(mysql_num_rows($result)>0){
         $id = mysql_result($result, 0);

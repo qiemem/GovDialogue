@@ -48,7 +48,6 @@ if (inError()) {
     }
     echo "Post successful!";
     $domain = $_SERVER['HTTP_HOST'];
-    echo $commentid;
     header("Location: http://$domain/govit/viewpost.php?postid=$postid&commentid=$commentid#$commentid");
     exit();   
 }
