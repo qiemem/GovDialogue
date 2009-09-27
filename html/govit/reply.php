@@ -1,7 +1,9 @@
 <?php
+ob_start(); // for redirect
 
 // index.php
-
+require_once("lib/commentmanagement.php");
+require_once("lib/postmanagement.php");
 require_once("header.php");
 printHeader("Title", "Keywords", "Description");
 
@@ -11,41 +13,48 @@ function inError(){
 }
 
 if (!isUserLoggedIn()) { $errors['You must be logged in to reply.']; }
-if (!isset($_POST['parentNode'])) { $errors['There was an error with your request.']; }
-if (!isset($_POST['replyType'])) { $errors['Invalid reply type']; }
-if (!isset($_POST['replyText']) || strlen($_POST['replyText']) <= 1) { $errors['Your reply was empty.']; }
-if (strlen($_POST) > 500) { $errors['Your reply must be less than 500 characters.']; }
-
-if (!inError())
-{
-	// Post comment
-	
-	// Determine whether it's supposed to post a reply to a post or a comment
-	if ($_POST['replyType'] == "post")
-	{
-		// post reply to top-level post
-	}
-	else
-	{
-		// post reply to comment
-	}
-	
+if (!isset($_POST['parentID']) or !isset($_POST['parentType'])) { 
+    $errors[] = 'I can\'t tell what you\'re replying to.';
 }
-else
-{
-	// Display errors
-	echo("<p>There were some problems with your form. Please go back and try again.</p><br /><br />");
-	
-	// Display error messages
-	echo("<ul>\n");
-	for ($i = 0; $i < count($errors); $i++)
-	{
-		echo("<li>" . $errors[$i] . "</li>");
-	}
-	echo("</ul>");
-
+if (!isset($_POST['replyContent']) || strlen($_POST['replyContent']) <= 1) { 
+    $errors[]='Your reply was empty.';
+} else if (strlen($_POST['replyContent']) > 1000) { 
+    $errors[]='Your reply must be less than 1000 characters.'; 
 }
+
+if (inError()) {
+    // Display errors
+    echo("<p>There were some problems with your form. Please go back and try again.</p><br /><br />");
+    
+    // Display error messages
+    echo("<ul>\n");
+    for ($i = 0; $i < count($errors); $i++) {
+        echo("<li>" . $errors[$i] . "</li>");
+    }
+    echo("</ul>");
+
+ } else {
+    // Post comment
+    
+    // Determine whether it's supposed to post a reply to a post or a comment
+    if ($_POST['parentType'] == "post") {
+        $commentid=add_reply_to_post($user_id, $_POST['parentID'], $_POST['replyContent']);
+        $post = get_post($_POST['parentID']);
+        $postid = $post['id'];
+    }
+    else if ($_POST['parentType'] == "comment") {
+        $commentid=add_reply_to_comment($user_id, $_POST['parentID'], $_POST['replyContent']);
+        $comment = get_comment($_POST['parentID']);
+        $postid = $comment['postparent'];
+    }
+    echo "Post succesful!";
+    $domain = $_SERVER['HTTP_HOST'];
+    echo $commentid;
+    header("Location: http://$domain/govit/viewpost.php?postid=$postid&commentid=$commentid#$commentid");
+    exit();   
+}
+
 
 require_once("footer.php");
-
+ob_flush(); //for redirect
 ?>

@@ -72,7 +72,7 @@ function write_comment_header($comment) {
     }else{
         echo "<li class=\"childcomment\" id=\"comment$commentid\">\n";
     }
-    echo "<a name=\"id$commentid\"></a>";
+    echo "<a name=\"$commentid\"></a>";
 }
 
 function write_comment_footer($comment) {
@@ -120,8 +120,9 @@ function write_comment_reply_form($comment) {
     echo "<form name=\"replyForm_$commentid\" action=\"reply.php\" method=\"post\">\n";
                             
     echo "<p class=\"replyCaption\">Enter your reply here:</p>\n";
-    echo "<textarea name=\"replyContent_$commentid\" class=\"commentReplyForm\" id=\"replyContent_$commentid\" cols=\"40\" rows=\"8\" onfocus=\"if(this.value=='Write your comment here'){this.value='';}\" onblur=\"if(this.value==''){this.value='Write your comment here';}\">Write your comment here</textarea>\n";
-                            
+    echo "<textarea name=\"replyContent\" class=\"commentReplyForm\" id=\"replyContent_$commentid\" cols=\"40\" rows=\"8\" onfocus=\"if(this.value=='Write your comment here'){this.value='';}\" onblur=\"if(this.value==''){this.value='Write your comment here';}\">Write your comment here</textarea>\n";
+    echo "<input name=\"parentID\" type=\"hidden\" value=\"$commentid\" />\n";
+    echo "<input name=\"parentType\" type=\"hidden\" value=\"comment\" />\n";
     echo "<p class=\"replySubmit\"><input type=\"submit\" value=\"Post\" /></p>\n";
     echo "</form>\n";
     echo "<!-- User not logged in -->\n";
