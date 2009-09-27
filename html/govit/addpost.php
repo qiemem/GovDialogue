@@ -39,7 +39,7 @@ if (!inError()) {
     if (add_post($user_id, $postTitle, $postContent, $postTags)) {
         $postid = get_post_id($user_id, $postTitle, $postContent);
         echo("Your post was successfully added! \n");
-        echo "<a href=\"viewpost?postid.php=$postid\">Go to post.</a>\n";
+        echo "<a href=\"viewpost.php?postid=$postid\">Go to post.</a>\n";
     }
     else {
         $errors[] = "There was an unknown error adding your post";
