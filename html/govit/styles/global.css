@@ -11,6 +11,8 @@ body
 	padding: 0;
 }
 
+div.clearBoth { clear: both; }
+
 a, a:active, a:visited { color: #0033CC; }
 a:hover { color: #0066FF; }
 
@@ -27,7 +29,7 @@ h1, h2, h3, h4, h5
 h2
 {
 	color: #555555;
-	font-size: 30px;
+	font-size: 26px;
 }
 
 div.container

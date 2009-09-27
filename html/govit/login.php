@@ -5,6 +5,7 @@
 ob_start();
 
 require_once("lib/sessionmanagement.php");
+require_once("lib/userdisplay.php"); // to display the login box
 
 require_once("header.php");
 printHeader("Login", "Keywords", "Description");
@@ -47,21 +48,7 @@ else
 	{
 		// No form has been submitted
 		// So, display login form
-		
-		?>
-		
-<div class="loginBox">            
-    <form name="loginForm" method="POST" action="<?php $_SERVER["PHP_SELF"] ?>">
-        <span class="loginBoxHeader">Login</span>
-        <input type="text" name="email" value="Email address" onfocus="if(this.value=='Email address'){this.value='';}" onblur="if(this.value==''){this.value='Email address';}" />
-        <input type="text" name="password" value="Password" onfocus="if(this.value=='Password'){this.value='';this.type='password';}" onblur="if(this.value==''){this.value='Password';}" />
-        <input type="submit" class="submitButton" value="Login" />
-		<p class="bottomText"><a href="join.php">Join</a>&nbsp;|&nbsp;<a href="#">Forgot password?</a></p>
-    </form>
-</div>
-
-        
-		<?php
+		print_login_box("loginpage");
 	}
 	
 }
