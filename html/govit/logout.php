@@ -8,13 +8,12 @@ require_once("lib/sessionmanagement.php");
 require_once("header.php");
 printHeader("Title", "Keywords", "Description");
 
-if (isUserLoggedIn())
-{
-	logout();
-	header("Location: http://dev.morninj.com/govit/logout.php");
-	exit();	
+if (isUserLoggedIn()) {
+    logout();
 }
-
+$domain = $_SERVER['HTTP_HOST'];
+header("Location: http://$domain/govit/index.php");
+exit();
 ?>
 
 Logged out.

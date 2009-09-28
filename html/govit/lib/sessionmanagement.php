@@ -27,6 +27,10 @@ function login($email, $password) {
     }
 }
 
+function is_logged_in() {
+    return isset($_SESSION['user']);
+}
+
 function logout() {
     $_SESSION['user']=null;
 }
