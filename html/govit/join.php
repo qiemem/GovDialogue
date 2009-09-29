@@ -5,7 +5,7 @@
 require_once("lib/usermanagement.php");
 
 require_once("header.php");
-printHeader("Join", "Keywords", "Description");
+printHeader("Join", "Keywords", "Description", "join");
 
 /* Structure:
 
