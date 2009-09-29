@@ -12,14 +12,15 @@ function write_comment_credits($comment) {
 }
 
 function write_comment_ratings($comment) {
+    $commentid = $comment['id'];
     $insightful = $comment['insightful'];
     $offtopic = $comment['offtopic'];
     $abusive = $comment['abusive'];
     echo "<p class=\"commentRating\">";
     echo "Rate this comment: ";
-    echo "<a href=\"#\" class=\"insightful\">Insightful</a> ($insightful) | ";
-    echo "<a href=\"#\" class=\"offtopic\">Off topic</a> ($offtopic) | ";
-    echo "<a href=\"#\" class=\"abusive\">Abusive</a> ($abusive)</p>\n";
+    echo "<a href=\"javascript:void(0);\" onclick=\"upVoteAttribute($commentid,'insightful');\" class=\"insightful\">Insightful</a> (<span id=\"insightful$commentid\">$insightful</span>) | ";
+    echo "<a href=\"javascript:void(0);\" onclick=\"upVoteAttribute($commentid,'offtopic');\" class=\"offtopic\">Off topic</a> (<span id=\"offtopic$commentid\">$offtopic</span>) | ";
+    echo "<a href=\"javascript:void(0);\" onclick=\"upVoteAttribute($commentid,'abusive');\" class=\"abusive\">Abusive</a> (<span id=\"abusive$commentid\">$abusive</span>)</p>\n";
 }
 
 function write_comment_reply_info($comment, $showcomments) {

@@ -68,18 +68,19 @@ function up_vote_attribute($commentid, $attribute) {
     $sql = "UPDATE comments SET $attribute=$newval WHERE id=$commentid";
     mysql_query($sql);
     db_close($con);
+    return $newval;
 }
 
 function up_vote_insightful($commentid) {
-    up_vote_attribute($commentid, 'insightful');
+    return up_vote_attribute($commentid, 'insightful');
 }
 
 function up_vote_off_topic($commentid) {
-    up_vote_attribute($commentid, 'offtopic');
+    return up_vote_attribute($commentid, 'offtopic');
 }
 
 function up_vote_abusive($commentid) {
-    up_vote_attribute($commentid, 'abusive');
+    return up_vote_attribute($commentid, 'abusive');
 }
 
 function get_comment($commentid) {
