@@ -30,11 +30,10 @@ function print_greeting_box($divid) {
 function print_user_info($user_id) {
     $user = get_user($user_id);
     echo "<ul class=\"userInfo\">\n";
-    foreach($user as $field => $value){
-        if($field!="id") {
-            echo "<li>$field: $value</li>\n";
-        }
-    }
+    echo "<li>First name: ".$user['firstname']."</li>\n";
+    echo "<li>Last name: ".$user['lastname']."</li>\n";
+    echo "<li>Email: ".$user['email']."</li>\n";
+    echo "</ul>\n";
 }
 
 ?>
