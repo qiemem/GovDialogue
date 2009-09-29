@@ -45,6 +45,7 @@ function printHeader($page_title, $page_description, $page_keywords)
 <link rel="stylesheet" type="text/css" href="styles/index.css" media="screen" />
 
 <script language="javascript" type="text/javascript" src="scripts/global.js"></script>
+<script language="javascript" type="text/javascript" src="lib/voteattribute.js"></script>
 
 </head>
 
