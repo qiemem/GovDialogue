@@ -5,13 +5,13 @@
 ?>
 
 
-    </div><!-- /.content -->
+    </div><!-- /.contentBox -->
     
-    <div class="contentBottom"><img src="images/spacer.gif" width="1" height="1" border="0" /></div>
+    <div class="contentBoxBottom"><img src="images/spacer.gif" width="1" height="1" border="0" /></div>
     
     <div class="footer">
         <div class="footerContainer">
-    This is Govit. <a href="http://dev.morninj.com/govit/">http://dev.morninj.com/govit/</a>
+   <!-- This is Govit. <a href="http://dev.morninj.com/govit/">http://dev.morninj.com/govit/</a> -->
         </div><!-- /.footerContainer -->
     </div><!-- /.footer -->
     

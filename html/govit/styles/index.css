@@ -1,8 +1,69 @@
 @charset "UTF-8";
 /* CSS Document */
 
-#indexLoginBox
+.indexLeft
 {
+	width: 430px;
+	float: left;
+}
+
+.indexLeft p.welcomeMsg
+{
+	font-size: 16px;
+	font-weight: normal;
+	color: #666666;
+	line-height: 24px;
+}
+
+.indexRight
+{
+	border-left: 1px solid #e3e3e3;
 	float: right;
-	margin: 0 0 50px 50px;
+	height: 180px;
+	margin: 15px 20px 20px 0;
+	padding: 0 0 0 50px;
+	width: 200px;
+}
+
+.midbox
+{
+	margin: 10px 0;	
+	width: 200px;
+}
+
+.midbox h3
+{
+	font-size: 20px;
+	color: #888888;
+	margin: 0;
+}
+
+.midbox h3 a, .midbox h3 a:active, .midbox h3 a:visited { color: #888888; text-decoration: none; }
+.midbox h3 a:hover { color: #555555; }
+
+.midbox p
+{
+	color: #555555;
+	margin: 15px 0 0 0;
+	font-size: 11px;
+}
+
+.indexMidBoxOne
+{
+	float: left;
+	padding: 0 34px 0 0;
+	border-right: 1px solid #e3e3e3;
+}
+
+.indexMidBoxTwo
+{
+	float: left;
+	padding: 0 34px;
+	border-right: 1px solid #e3e3e3;
+}
+
+.indexMidBoxThree
+{
+	float: left;
+	padding: 0 0 0 34px;
 }

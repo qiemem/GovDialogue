@@ -9,19 +9,56 @@ require_once("header.php");
 printHeader("Title", "Keywords", "Description");
 ?>
 
-<h2>Welcome</h2>
+<div class="indexLeft">
+    <h2>Welcome</h2>
+    <p class="welcomeMsg">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    <div class="clearBoth"></div>
+</div><!-- /.indexLeft -->
 
+<div class="indexRight">
 <?php
-if(is_logged_in()){
+if(isUserLoggedIn()){
     print_greeting_box("indexLoginBox");
  }else{
     print_login_box("indexLoginBox");
  }
+ ?>
+</div><!-- /.indexRight -->
 
-?>
-
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 <div class="clearBoth"></div>
+
+
+</div><!-- /.contentBox -->
+<div class="contentBoxBottom"><img src="images/spacer.gif" width="1" height="1" border="0" /></div>
+
+
+<div class="contentBoxTop"><img src="images/spacer.gif" width="1" height="1" border="0" /></div>
+<div class="contentBox">
+
+
+<div class="midbox indexMidBoxOne">
+	<h3><a href="allposts.php">Browse posts</a></h3>
+    <p>
+    	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+    </p>
+</div>
+
+<div class="midbox indexMidBoxTwo">
+	<h3><a href="makenewpost.php">Make a New Post</a></h3>
+    <p>
+    	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+    </p>
+</div>
+
+<div class="midbox indexMidBoxThree">
+	<h3><a href="feedback.php">Send Feedback</a></h3>
+    <p>
+    	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+    </p>
+</div>
+
+<div class="clearBoth"></div>
+
 
 <?php
 require_once("footer.php");

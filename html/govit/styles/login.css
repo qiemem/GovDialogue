@@ -3,17 +3,21 @@
 
 div.loginBox
 {
-	background-color: #f7f7f7;
 	width: 200px;
-	padding: 20px;
-	border: 1px solid #cccccc;
+	padding: 0;
 	overflow: hidden;
 }
 
 div.loginBox span.loginBoxHeader
 {
 	font-size: 18px;
-	color: #00AA00;
+	color: #555555;
+	line-height: 25px;
+}
+
+div.loginBox span.loginBoxHeader span.welcomeback
+{
+	color: #999999;
 }
 
 div.loginBox input
@@ -25,6 +29,19 @@ div.loginBox input
 div.loginBox input.submitButton
 {
 	width: auto;
+}
+
+div.loginBox ul.links
+{
+	list-style-type: none;
+	margin: 20px 0;
+	padding: 0;
+}
+
+div.loginBox ul.links li
+{
+	color: #999999;
+	margin: 4px 0;
 }
 
 div.loginBox p.bottomText
