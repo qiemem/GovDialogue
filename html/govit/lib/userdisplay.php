@@ -27,4 +27,14 @@ function print_greeting_box($divid) {
     echo "</div>";
 }
 
+function print_user_info($user_id) {
+    $user = get_user($user_id);
+    echo "<ul class=\"userInfo\">\n";
+    foreach($user as $field => $value){
+        if($field!="id") {
+            echo "<li>$field: $value</li>\n";
+        }
+    }
+}
+
 ?>
