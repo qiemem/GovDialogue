@@ -40,7 +40,6 @@ h2
 
 div.headerContainer
 {
-	background-image: url(../images/header_placeholder.png);
 	width: 850px;
 	height: 100px;
 	overflow: hidden;
@@ -48,20 +47,72 @@ div.headerContainer
 	padding: 0;
 }
 
-div.header ul.nav
+div.headerLeft
+{
+	float: left;
+	height: 100px;
+	width: 261px;
+}
+
+div.nav
+{
+	float: left;
+	background-image: url(../images/headerNavBg.png);
+	height: 100px;
+	max-width: 548px;
+}
+
+ul.nav
 {
 	list-style-type: none;
-	margin: 0;
+	margin: 43px 0 0 0;
 	padding: 0;
 }
 
-div.header ul.nav li
+ul.nav li
 {
 	display: inline;
-	font-size: 17px;
-	margin: 0 20px 0 0;
-	padding: 0;
+	font-size: 13px;
+	margin: 0;
+	padding: 0 15px 0 13px;
+	border-right: 1px solid #dfdfdf;
 }
+
+ul.nav li.first {
+	padding: 0 15px 0 5px;
+}
+
+ul.nav li.last {
+	border: none;
+	padding: 0 5px 0 13px;
+}
+
+ul.nav li a, ul.nav li a:active, ul.nav li a:visited
+{
+	color: #666666;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+ul.nav li a:hover { color: #333333; }
+
+ul.nav li.thisPage a, ul.nav li.thisPage a:active, ul.nav li.thisPage a:visited
+{
+	color: #3287d7;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+ul.nav li.thisPage a:hover { color: #005fb7; }
+
+div.headerRight
+{
+	background-image: url(../images/headerRight.png);
+	float: left;
+	height: 100px;
+	width: 41px;
+}
+
 
 /* /Header */
 

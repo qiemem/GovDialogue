@@ -52,8 +52,39 @@ function printHeader($page_title, $page_description, $page_keywords)
 <body>
 
 	<div class="headerContainer">
-    &nbsp;
-    </div>
+    	<div class="headerLeft"><img src="images/headerLeft.png" border="0" width="261" height="100" /></div>
+        <div class="nav">
+        	<ul class="nav">
+       
+            <?php
+            if (isUserLoggedIn())
+            {
+                ?>
+                <li class="first thisPage"><a href="/govit/">Home</a></li>
+                <li><a href="/govit/allposts.php">All Posts</a></li>
+                <li><a href="/govit/makenewpost.php">Make New Post</a></li>
+                <li><a href="/govit/profile.php">Your Profile</a></li>
+                <li><a href="/govit/logout.php">Logout</a></li>
+                <li class="last"><a href="/govit/feedback.php">Feedback</a></li>
+                <?php
+            }
+            else
+            {
+            ?>
+                <li class="first thisPage"><a href="/govit/">Home</a></li>
+                <li><a href="/govit/allposts.php">All Posts</a></li>
+                <li><a href="/govit/makenewpost.php">Make New Post</a></li>
+                <li><a href="/govit/join.php">Join</a></li>
+                <li><a href="/govit/login.php">Login</a></li>
+                <li class="last"><a href="/govit/feedback.php">Feedback</a></li>
+            <?php
+            }
+            ?>
+            </ul>
+        </div>
+        <div class="headerRight"><img src="images/spacer.gif" border="0" width="1" height="1" /></div>
+        <div class="clearBoth"></div>
+    </div><!-- /.headerContainer -->
 
     <!--
     <div class="header">
@@ -61,33 +92,7 @@ function printHeader($page_title, $page_description, $page_keywords)
         <div class="headerContainer">
         <h1><a href="/govit/">Govit</a> <span class="version">alpha</span></h1>
         
-        <ul class="nav">
-   
-        <?php
-        if (isUserLoggedIn())
-        {
-            ?>
-            <li><a href="/govit/">Home</a></li>
-            <li><a href="/govit/allposts.php">All Posts</a></li>
-            <li><a href="/govit/makenewpost.php">Make New Post</a></li>
-            <li><a href="/govit/profile.php">Your Profile</a></li>
-            <li><a href="/govit/logout.php">Logout</a></li>
-            <li><a href="/govit/feedback.php">Feedback</a></li>
-            <?php
-        }
-        else
-        {
-        ?>
-            <li><a href="/govit/">Home</a></li>
-            <li><a href="/govit/allposts.php">All Posts</a></li>
-            <li><a href="/govit/makenewpost.php">Make New Post</a></li>
-            <li><a href="/govit/join.php">Join</a></li>
-            <li><a href="/govit/login.php">Login</a></li>
-            <li><a href="/govit/feedback.php">Feedback</a></li>
-        <?php
-        }
-        ?>
-        </ul>
+        
     
         </div><!-- /.headerContainer -->
     
