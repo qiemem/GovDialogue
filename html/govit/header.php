@@ -38,7 +38,7 @@ function printHeader($page_title, $page_description, $page_keywords)
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title><?php echo($page_title); ?></title>
 
-<link rel="stylesheet" type="text/css" href="styles/global.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="styles/global2.css" media="screen" />
 <link rel="stylesheet" type="text/css" href="styles/posts.css" media="screen" />
 <link rel="stylesheet" type="text/css" href="styles/forms.css" media="screen" />
 <link rel="stylesheet" type="text/css" href="styles/login.css" media="screen" />
@@ -85,6 +85,8 @@ function printHeader($page_title, $page_description, $page_keywords)
         </div><!-- /.headerContainer -->
     
     </div><!-- /.header -->
+    
+    <div class="contentTop"><img src="images/spacer.gif" width="1" height="1" border="0" /></div>
     
     <div class="content">
 
