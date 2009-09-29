@@ -4,7 +4,7 @@
 error_reporting(E_ALL);
 ini_set('display_errors', true);
 require_once("header.php");
-printHeader("Title", "Keywords", "Description");
+printHeader("Title", "Keywords", "Description", "newpost");
 
 
 ?>
@@ -35,7 +35,7 @@ if (isUserLoggedIn())
 }
 else
 {
-	echo("You must be logged in to post.");
+	echo("<p>You must be logged in to post.</p>");
 }
 
 require_once("footer.php");

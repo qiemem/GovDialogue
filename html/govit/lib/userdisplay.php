@@ -9,8 +9,8 @@ function print_login_box($divid) {
 <div class="loginBox" id="<?= $divid; ?>">            
     <form name="loginForm" method="POST" action="login.php">
         <span class="loginBoxHeader">Login</span>
-        <input type="text" name="email" value="Email address" onfocus="if(this.value=='Email address'){this.value='';}" onblur="if(this.value==''){this.value='Email address';}" />
-        <input type="text" name="password" value="Password" onfocus="if(this.value=='Password'){this.value='';this.type='password';}" onblur="if(this.value==''){this.value='Password';this.type='text';}" />
+        <input type="text" name="email" value="Email address" onfocus="if(this.value=='Email address'){this.value='';}this.style.borderColor='#777777';" onblur="if(this.value==''){this.value='Email address';}this.style.borderColor='#cccccc';" />
+        <input type="text" name="password" value="Password" onfocus="if(this.value=='Password'){this.value='';this.type='password';}this.style.borderColor='#777777';" onblur="if(this.value==''){this.value='Password';this.type='text';}this.style.borderColor='#cccccc';" />
         <input type="submit" class="submitButton" value="Login" />
         <p class="bottomText"><a href="join.php">Join</a>&nbsp;|&nbsp;<a href="#">Forgot password?</a></p>
     </form>

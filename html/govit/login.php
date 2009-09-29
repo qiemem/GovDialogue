@@ -8,7 +8,7 @@ require_once("lib/sessionmanagement.php");
 require_once("lib/userdisplay.php"); // to display the login box
 
 require_once("header.php");
-printHeader("Login", "Keywords", "Description");
+printHeader("Login", "Keywords", "Description", "login");
 
 if (isset($_SESSION['user'])) {
     

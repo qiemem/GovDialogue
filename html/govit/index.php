@@ -6,7 +6,7 @@ require_once("lib/usermanagement.php");
 require_once("lib/sessionmanagement.php");
 
 require_once("header.php");
-printHeader("Title", "Keywords", "Description");
+printHeader("Title", "Keywords", "Description", "home");
 ?>
 
 <div class="indexLeft">

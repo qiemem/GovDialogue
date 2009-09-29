@@ -40,7 +40,7 @@ h2
 
 div.headerContainer
 {
-	width: 825px;
+	width: 850px;
 	text-align: center;
 	height: 100px;
 	overflow: hidden;
@@ -57,7 +57,7 @@ div.headerLeft
 {
 	float: left;
 	height: 100px;
-	width: 242px;
+	width: 270px;
 }
 
 div.nav
@@ -80,17 +80,17 @@ ul.nav li
 	display: inline;
 	font-size: 13px;
 	margin: 0;
-	padding: 0 15px 0 13px;
+	padding: 0 12px 0 9px;
 	border-right: 1px solid #dfdfdf;
 }
 
 ul.nav li.first {
-	padding: 0 15px 0 3px;
+	padding: 0 12px 0 5px;
 }
 
 ul.nav li.last {
 	border: none;
-	padding: 0 5px 0 12px;
+	padding: 0 3px 0 12px;
 }
 
 ul.nav li a, ul.nav li a:active, ul.nav li a:visited

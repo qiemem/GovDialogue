@@ -26,8 +26,9 @@ if (isset($_SESSION['user']))
 	$user_canpost = $_SESSION['user']['email'];
 }
 
+if (!isset($this_page)) { $this_page = "home"; }
 
-function printHeader($page_title, $page_description, $page_keywords)
+function printHeader($page_title, $page_description, $page_keywords, $this_page)
 {
 	?>
 	
@@ -53,30 +54,33 @@ function printHeader($page_title, $page_description, $page_keywords)
 
     <div class="headerContainer">
         <div class="headerContainerInner">
-            <div class="headerLeft"><img src="images/headerLeft.png" border="0" width="242" height="100" /></div>
+            <div class="headerLeft"><img src="images/headerLeft.png" border="0" width="270" height="100" /></div>
             <div class="nav">
                 <ul class="nav">
                 <?php
                 if (isUserLoggedIn())
                 {
+				
+				// TODO: add $this_page parameter to printHeader function on all pages
+				
                     ?>
-                    <li class="first thisPage"><a href="/govit/">Home</a></li>
-                    <li><a href="/govit/allposts.php">All Posts</a></li>
-                    <li><a href="/govit/makenewpost.php">Make New Post</a></li>
-                    <li><a href="/govit/profile.php">Your Profile</a></li>
-                    <li><a href="/govit/logout.php">Logout</a></li>
-                    <li class="last"><a href="/govit/feedback.php">Feedback</a></li>
+                    <li class="first<?php if (!isset($this_page) || $this_page == "home") { echo(" thisPage"); } ?>"><a href="/govit/">Home</a></li>
+                    <li<?php if ($this_page == "allposts") { echo(" class=\"thisPage\""); } ?>><a href="/govit/allposts.php">All Posts</a></li>
+                    <li<?php if ($this_page == "newpost") { echo(" class=\"thisPage\""); } ?>><a href="/govit/makenewpost.php">Make New Post</a></li>
+                    <li<?php if ($this_page == "profile") { echo(" class=\"thisPage\""); } ?>><a href="/govit/profile.php">Your Profile</a></li>
+                    <li<?php if ($this_page == "logout") { echo(" class=\"thisPage\""); } ?>><a href="/govit/logout.php">Logout</a></li>
+                    <li class="last<?php if ($this_page == "feedback") { echo(" thisPage"); } ?>"><a href="/govit/feedback.php">Feedback</a></li>
                     <?php
                 }
                 else
                 {
                 ?>
-                    <li class="first thisPage"><a href="/govit/">Home</a></li>
-                    <li><a href="/govit/allposts.php">All Posts</a></li>
-                    <li><a href="/govit/makenewpost.php">Make New Post</a></li>
-                    <li><a href="/govit/join.php">Join</a></li>
-                    <li><a href="/govit/login.php">Login</a></li>
-                    <li class="last"><a href="/govit/feedback.php">Feedback</a></li>
+                    <li class="first"><a href="/govit/">Home</a></li>
+                    <li<?php if ($this_page == "allposts") { echo(" class=\"thisPage\""); } ?>><a href="/govit/allposts.php">All Posts</a></li>
+                    <li<?php if ($this_page == "newpost") { echo(" class=\"thisPage\""); } ?>><a href="/govit/makenewpost.php">Make New Post</a></li>
+                    <li<?php if ($this_page == "join") { echo(" class=\"thisPage\""); } ?>><a href="/govit/join.php">Join</a></li>
+                    <li<?php if ($this_page == "login") { echo(" class=\"thisPage\""); } ?>><a href="/govit/login.php">Login</a></li>
+                    <li class="last<?php if ($this_page == "feedback") { echo(" thisPage"); } ?>"><a href="/govit/feedback.php">Feedback</a></li>
                 <?php
                 }
                 ?>

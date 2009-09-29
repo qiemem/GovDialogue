@@ -12,7 +12,7 @@
 	font-size: 16px;
 	font-weight: normal;
 	color: #666666;
-	line-height: 24px;
+	line-height: 26px;
 }
 
 .indexRight
@@ -20,7 +20,7 @@
 	border-left: 1px solid #e3e3e3;
 	float: right;
 	height: 180px;
-	margin: 15px 20px 20px 0;
+	margin: 15px 20px 15px 0;
 	padding: 0 0 0 50px;
 	width: 200px;
 }
