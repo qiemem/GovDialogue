@@ -12,11 +12,14 @@ function write_comment_credits($comment) {
 }
 
 function write_comment_ratings($comment) {
+    $insightful = $comment['insightful'];
+    $offtopic = $comment['offtopic'];
+    $abusive = $comment['abusive'];
     echo "<p class=\"commentRating\">";
     echo "Rate this comment: ";
-    echo "<a href=\"#\" class=\"insightful\">Insightful</a> (3) | ";
-    echo "<a href=\"#\" class=\"offtopic\">Off topic</a> (1) | ";
-    echo "<a href=\"#\" class=\"abusive\">Abusive</a> (0)</p>\n";
+    echo "<a href=\"#\" class=\"insightful\">Insightful</a> ($insightful) | ";
+    echo "<a href=\"#\" class=\"offtopic\">Off topic</a> ($offtopic) | ";
+    echo "<a href=\"#\" class=\"abusive\">Abusive</a> ($abusive)</p>\n";
 }
 
 function write_comment_reply_info($comment, $showcomments) {
