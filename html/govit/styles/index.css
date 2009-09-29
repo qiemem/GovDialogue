@@ -7,14 +7,6 @@
 	float: left;
 }
 
-.indexLeft p.welcomeMsg
-{
-	font-size: 16px;
-	font-weight: normal;
-	color: #666666;
-	line-height: 26px;
-}
-
 .indexRight
 {
 	border-left: 1px solid #e3e3e3;
