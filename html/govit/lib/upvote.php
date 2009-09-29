@@ -9,7 +9,7 @@ if(isset($_GET['attribute']) and isset($_GET['commentid'])){
         echo up_vote_insightful($commentid);
         break;
     case "offtopic":
-        echo up_vote_offtopic($commentid);
+        echo up_vote_off_topic($commentid);
         break;
     case "abusive":
         echo up_vote_abusive($commentid);

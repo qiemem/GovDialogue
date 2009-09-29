@@ -10,13 +10,13 @@ function getXMLHttpRequest() {
     return xmlhttp;
 }
 function upVoteAttribute(commentID, attribute) {
-    var xmlhttp = getXMLHttp();
+    var xmlhttp = getXMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
-        if (xmlhttp.readState==4) {
+        if (xmlhttp.readyState==4) {
             document.getElementById(attribute+commentID).innerHTML=xmlhttp.responseText;
         }
     }
-    var url = "upvote.php?commentid="+commentID+"&attribute="+attribute;
+    var url = "lib/upvote.php?commentid="+commentID+"&attribute="+attribute+"&sid="+Math.random();
     xmlhttp.open("GET",url,true);
     xmlhttp.send(null);
 }
