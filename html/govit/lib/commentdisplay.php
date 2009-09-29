@@ -8,7 +8,7 @@ function write_comment_content($comment) {
 
 function write_comment_credits($comment) {
     $user = get_user($comment['user']);
-    echo "<p class=\"commentCredits\">Posted by: ".$user['firstname']." ".$user['lastname']."</p>\n";
+    echo "<p class=\"commentCredits\">Posted by: ".$user['firstname']." ".$user['lastname']." on ".$comment['posttime']."</p>\n";
 }
 
 function write_comment_ratings($comment) {
@@ -49,10 +49,10 @@ function write_comment_reply_info($comment, $showcomments) {
     }
 }
 
-function write_comment_replies($comment, $showcomments) {
+function write_comment_replies($comment, $showcomments,$orderby="posttime",$descending=false) {
     $commentid = $comment['id'];
     echo "<!-- Begin comment $commentid replies -->";
-    $children = get_children_of_comment($commentid);
+    $children = get_children_of_comment($commentid,$orderby,$descending);
     if(mysql_num_rows($children)>0){
         echo "<li>\n";
         if(array_key_exists($commentid,$showcomments) and $showcomments[$commentid]){
@@ -85,7 +85,7 @@ function write_comment_footer($comment) {
     echo "<!-- /#$commentid -->\n";
 }
 
-function write_comment_thread($commentid, $showcomments) {
+function write_comment_thread($commentid, $showcomments,$orderby="posttime",$descending=false) {
     validate_comment_id($commentid);
     $comment = get_comment($commentid);
     $user = get_user($comment['user']);
@@ -96,23 +96,32 @@ function write_comment_thread($commentid, $showcomments) {
     write_comment_reply_info($comment,$showcomments);
     write_comment_footer($comment);
     write_comment_reply_form($comment);
-    write_comment_replies($comment,$showcomments);
+    write_comment_replies($comment,$showcomments,$orderby,$descending);
         
 }
 
-function write_comments_of_post($postid, $showcomments) {
+function write_comments_of_post($postid, $showcomments,$orderby="posttime",$descending=false) {
     validate_post_id($postid);
-    $top_level = get_top_level_children_of_post($postid);
+    $top_level = get_top_level_children_of_post($postid, $orderby, $descending);
     if(mysql_num_rows($top_level)>0){
         echo "<ol class=\"toplevel\">\n";
         while($child = mysql_fetch_array($top_level)) {
-            write_comment_thread($child['id'], $showcomments);
+            write_comment_thread($child['id'], $showcomments, $orderby, $descending);
         }
         echo "</ol>";
         return true;
     }else{
         return false;
     }
+}
+
+function write_comment_ordering_options($postid, $current_ordering) {
+    $url = $_SERVER['PHP_SELF']."?postid=$postid";
+    echo "<ul class=\"commentOrderingOptions\">\n";
+    echo "<li><a href=\"$url&ordering=newestfirst\">newest first</a></li>\n";
+    echo "<li><a href=\"$url&ordering=oldestfirst\">oldest first</a></li>\n";
+    echo "<li><a href=\"$url&ordering=mostinsightful\">most insightful</a></li>\n";
+    echo "</ul>\n";
 }
 
 function write_comment_reply_form($comment) {

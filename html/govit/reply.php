@@ -12,15 +12,17 @@ function inError(){
 	return count($errors) > 0;
 }
 
-if (!isUserLoggedIn()) { $errors['You must be logged in to reply.']; }
+if (!isUserLoggedIn()) { 
+    $errors[] = 'You must be logged in to reply.';
+ }
 if (!isset($_POST['parentID']) or !isset($_POST['parentType'])) { 
     $errors[] = 'I can\'t tell what you\'re replying to.';
-}
+ }
 if (!isset($_POST['replyContent']) || strlen($_POST['replyContent']) <= 1) { 
     $errors[]='Your reply was empty.';
-} else if (strlen($_POST['replyContent']) > 1000) { 
+ } else if (strlen($_POST['replyContent']) > 1000) { 
     $errors[]='Your reply must be less than 1000 characters.'; 
-}
+ }
 
 if (inError()) {
     // Display errors

@@ -96,10 +96,13 @@ function get_comment($commentid) {
     return $comment;
 }
 
-function get_children_of_comment($commentid) {
+function get_children_of_comment($commentid, $orderby = "posttime", $descending = false) {
     validate_comment_id($commentid);
     $con = db_connect();
-    $sql = "SELECT * FROM comments WHERE parent=$commentid ORDER BY posttime DESC";
+    $sql = "SELECT * FROM comments WHERE parent=$commentid ORDER BY $orderby";
+    if($descending) {
+        $sql = $sql." DESC";
+    }
     $result = mysql_query($sql);
     db_close($con);
     return $result;
@@ -115,10 +118,14 @@ function get_parent($commentid) {
     return $comment['parent'];
 }
 
-function get_top_level_children_of_post($postid) {
+function get_top_level_children_of_post($postid, $orderby = "posttime", $descending = false) {
     validate_post_id($postid);
     $con = db_connect();
-    $sql = "SELECT * FROM comments WHERE postparent=$postid AND parent IS NULL ORDER BY posttime DESC";
+    $orderby = mysql_real_escape_string($orderby);
+    $sql = "SELECT * FROM comments WHERE postparent=$postid AND parent IS NULL ORDER BY $orderby";
+    if($descending) {
+        $sql = $sql." DESC";
+    }
     $result = mysql_query($sql);
     db_close($con);
     return $result;

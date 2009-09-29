@@ -22,15 +22,39 @@ if (isset($_GET['postid'])) {
     display_post($post_id);
     echo "<p class=\"postReplyLink\"><a href=\"javascript:void(0);\" onclick=\"javascript:togglePostReplyVisibility('$post_id');\">Add a new comment</a></p>\n";
     //echo "<p class=\"postReplyCommentForm\">";
+    
     write_post_reply_form($post_id);
     // Only display comments header if post has comments
     if(post_has_comments($post_id)) {
+        $orderby = "posttime";
+        $descending = true;
+        $ordering="oldestfirst";
+        if(isset($_GET['ordering'])) {
+            $ordering=$_GET['ordering'];
+            switch($_GET['ordering']) {
+            case "newestfirst":
+                $orderby = "posttime";
+                $descending = true;
+                break;
+            case "oldestfirst":
+                $orderby = "posttime";
+                $descending = false;
+                break;
+            case "mostinsightful":
+                $orderby = "insightful";
+                $descending = true;
+                break;
+            default:
+                $ordering = "oldestfirst";
+            }
+        }
         echo "<div class=\"commentsHeader\">\n";
         echo "<h3>Discussion</h3>\n";
-        echo "<p class=\"discussionsBlurb\">Newest comments are posted first.</p>\n";
+        //echo "<p class=\"discussionsBlurb\">Newest comments are posted first.</p>\n";
+        write_comment_ordering_options($post_id, $ordering);
         echo "</div>\n";
         echo "<div class=\"commentsList\">\n";
-        write_comments_of_post($post_id, $show_comments);
+        write_comments_of_post($post_id, $show_comments, $orderby, $descending);
         echo "</div>\n";
     }
 }else{
