@@ -6,8 +6,11 @@
 
 <h2>Join</h2>
 
-<p class="joinIntro">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+<div class="joinFormIntroText">
+<p class="largeText">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+</div><!-- /.joinFormIntroText -->
 
+<div class="joinFormFields">
 <form name="joinForm" id="joinForm" method="POST" action="<?php $_SERVER["PHP_SELF"] ?>">
 
 	<p><input id="firstname" name="firstname" type="text" value="First Name"
@@ -30,8 +33,11 @@
     	onblur="if(this.value==''){this.value='Re-enter your password';this.type='text'}this.style.borderColor='#cccccc';if(this.value=='Re-enter your password'){this.type='text';}"
         onfocus="if(this.value=='Re-enter your password'){this.value='';this.type='password'}this.style.borderColor='#777777';"/></p>
 
-	<p><input id="tos" name="tos" value="0" type="checkbox" class="checkboxes" /><label for="tos">I have read and agree to the <a href="termsofservice.php">terms of service</label></p>
+	<p><input id="tos" name="tos" value="0" type="checkbox" class="checkboxes" /><label for="tos">I have read and agree to the <a href="termsofservice.php">terms of service</a></label></p>
 
 	<p><input type="submit" class="submitButton" value="Join" name="submitted" /></p>
 
 </form>
+</div><!-- /.joinFormFields -->
+
+<div class="clearBoth"></div>
