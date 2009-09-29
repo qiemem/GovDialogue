@@ -75,7 +75,7 @@ function printHeader($page_title, $page_description, $page_keywords, $this_page)
                 else
                 {
                 ?>
-                    <li class="first"><a href="/govit/">Home</a></li>
+                    <li class="first<?php if (!isset($this_page) || $this_page == "home") { echo(" thisPage"); } ?>"><a href="/govit/">Home</a></li>
                     <li<?php if ($this_page == "allposts") { echo(" class=\"thisPage\""); } ?>><a href="/govit/allposts.php">All Posts</a></li>
                     <li<?php if ($this_page == "newpost") { echo(" class=\"thisPage\""); } ?>><a href="/govit/makenewpost.php">Make New Post</a></li>
                     <li<?php if ($this_page == "join") { echo(" class=\"thisPage\""); } ?>><a href="/govit/join.php">Join</a></li>
