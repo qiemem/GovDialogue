@@ -84,20 +84,7 @@ function printHeader($page_title, $page_description, $page_keywords)
         </div>
         <div class="headerRight"><img src="images/spacer.gif" border="0" width="1" height="1" /></div>
         <div class="clearBoth"></div>
-    </div><!-- /.headerContainer -->
-
-    <!--
-    <div class="header">
-    
-        <div class="headerContainer">
-        <h1><a href="/govit/">Govit</a> <span class="version">alpha</span></h1>
-        
-        
-    
-        </div><!-- /.headerContainer -->
-    
-    </div><!-- /.header -->
-	-->
+    </div>
     
     <div class="contentTop"><img src="images/spacer.gif" width="1" height="1" border="0" /></div> 
     <div class="content">
