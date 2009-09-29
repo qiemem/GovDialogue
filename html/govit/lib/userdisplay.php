@@ -20,14 +20,17 @@ function print_login_box($divid) {
 }
 
 function print_greeting_box($divid) {
+    $firstname = $_SESSION['user']['firstname'];
+    $lastname = $_SESSION['user']['lastname'];
+    $name = $firstname." ".$lastname;
     echo "<div class=\"loginBox\" id=\"$divid\">\n";
-    echo "<span class=\"loginBoxHeader\"><span class=\"welcomeback\">Welcome back,</span><br />Joey Mornin</span>\n";
-	echo("<ul class=\"links\">\n");
-	echo("<li>&raquo;&nbsp;&nbsp;<a href=\"#\">Edit your profile</a></li>\n");
-	echo("<li>&raquo;&nbsp;&nbsp;<a href=\"#\">View recent posts</a></li>\n");
-	echo("<li>&raquo;&nbsp;&nbsp;<a href=\"#\">Make a new post</a></li>\n");
-	echo("</ul>\n");
-    echo "<p class=\"bottomText\">(Not Joey? <a href=\"/govit/logout.php\">Log out.</a>)</p>\n";
+    echo "<span class=\"loginBoxHeader\"><span class=\"welcomeback\">Welcome back,</span><br />$name</span>\n";
+    echo("<ul class=\"links\">\n");
+    echo("<li>&raquo;&nbsp;&nbsp;<a href=\"#\">Edit your profile</a></li>\n");
+    echo("<li>&raquo;&nbsp;&nbsp;<a href=\"#\">View recent posts</a></li>\n");
+    echo("<li>&raquo;&nbsp;&nbsp;<a href=\"makenewpost.php\">Make a new post</a></li>\n");
+    echo("</ul>\n");
+    echo "<p class=\"bottomText\">(Not $firstname? <a href=\"/govit/logout.php\">Log out.</a>)</p>\n";
     echo "</div>";
 }
 

@@ -7,7 +7,7 @@ require_once("header.php");
 require_once("lib/commentdisplay.php");
 require_once("lib/commentmanagement.php");
 require_once("lib/postdisplay.php");
-printHeader("Title", "Keywords", "Description");
+printHeader("Title", "Keywords", "Description","allposts");
 
 
 $post_id = null;

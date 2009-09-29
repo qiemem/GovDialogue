@@ -29,42 +29,39 @@ function inError(){
 	return count($errors) > 0;
 }
 
-if (isUserLoggedIn()) // lives in header.php
-{
-	// User is already logged in; display error
-	echo("You're already logged in!");
+if (isUserLoggedIn()) { // lives in header.php
+    // User is already logged in; display error
+    echo("You're already logged in!");
 }
-else
-{
-	if (isset($_POST["submitted"]))
-	{
-		// Form has been submitted
-		echo("<p>Form has been submitted</p>");
-		
-		
-		// Validate fields and create user
+else {
+    if (isset($_POST["submitted"])) { 
+        // Form has been submitted
+        echo("<p>Form has been submitted</p>");
+        
 	
-		$errors = array();
-		
+        // Validate fields and create user
+	
+        $errors = array();
+	
 		// Check fields
-		if (strlen($_POST['firstname']) <= 0) {
-				$errors[] = 'You must enter your firstname';
-		}
-		if (strlen($_POST['lastname']) <= 0) {
-				$errors[] = 'You must enter your last name.';
-		}
-		if (strlen($_POST['email']) <= 0) {
+        if (strlen($_POST['firstname']) <= 0) {
+            $errors[] = 'You must enter your firstname';
+        }
+        if (strlen($_POST['lastname']) <= 0) {
+            $errors[] = 'You must enter your last name.';
+        }
+        if (strlen($_POST['email']) <= 0) {
 				$errors[] = 'You must enter your email address';
-		}
-		if (strlen($_POST['password1']) < 6) {
-				$errors[] = 'Your password must be at least 6 characters long.';
-		}
-		if ($_POST['password1'] != $_POST['password2']) {
-				$errors[] = 'Your passwords don\'t match.';
-		}
+        }
+        if (strlen($_POST['password1']) < 6) {
+            $errors[] = 'Your password must be at least 6 characters long.';
+        }
+        if ($_POST['password1'] != $_POST['password2']) {
+            $errors[] = 'Your passwords don\'t match.';
+        }
 		
 		
-		/*
+        /*
 		
 		TODO: add reCAPTCHA to form
 		
@@ -72,49 +69,44 @@ else
 		require_once('recaptchalib.php');
 		$privatekey = "6Ld7MQcAAAAAABVrkgntR-suieZdkTl2iuO915qZ";
 		$resp = recaptcha_check_answer ($privatekey,
-									$_SERVER["REMOTE_ADDR"],
-									$_POST["recaptcha_challenge_field"],
-									$_POST["recaptcha_response_field"]);
+                $_SERVER["REMOTE_ADDR"],
+                $_POST["recaptcha_challenge_field"],
+                $_POST["recaptcha_response_field"]);
 		if (!$resp->is_valid)
 		{
-			$errors[] = "The reCAPTCHA wasn't entered correctly. (reCAPTCHA said: " . $resp->error . ")";
+                $errors[] = "The reCAPTCHA wasn't entered correctly. (reCAPTCHA said: " . $resp->error . ")";
 		}
-		*/
+        */
+	
+        if (email_in_use($_POST['email'])) {
+            $errors[] = 'That email address is already in use.';
+        }
+	
+        if (!inError()) {
+                
+            if(!add_user($_POST['email'], $_POST['password1'], $_POST['firstname'], $_POST['lastname'], true)) {
+                $errors[] = 'There was a database error.';
+            }
+            else {	
+                echo("<p>User added successfully!");
+                
+                $validation_key = get_validation_key($_POST['email']);
+                    
+                    
+                // User successfully created!
+                $emailMessage = "Hi " . $_POST['firstname'] . ",
 		
-		if (email_in_use($_POST['email']))
-		{
-			$errors[] = 'That email address is already in use.';
-		}
-		
-		if (!inError())
-		{
-			
-			if(!add_user($_POST['email'], $_POST['password1'], $_POST['firstname'], $_POST['lastname'], true))
-			{
-				$errors[] = 'There was a database error.';
-			}
-			else
-			{	
-				echo("<p>User added successfully!");
-				
-				$validation_key = get_validation_key($_POST['email']);
-				
-				
-				// User successfully created!
-				$emailMessage = "Hi " . $_POST['firstname'] . ",
-				
-Welcome to Govit. Validate your account here: http://dev.morninj.com/govit/validate.php?v=$validation_key
+Welcome to GovDialogue. Validate your account here: http://govdialogue.com/govit/validate.php?v=$validation_key
 
 Thanks,
 Govit
 ";
 
-				// Send email confirmation
-				if(mail($_POST['email'], "Welcome message subject", $emailMessage, "From: Email address <serveradmin@dev.morninj.com>"))
-				{
-					?>
-					
-					Thanks! You should get an email at <strong><?php echo($_POST['email']); ?></strong> with a confirmation link. Once you verify your email address, you'll be able to post.
+                // Send email confirmation
+                if(mail($_POST['email'], "Welcome to GovDialogue", $emailMessage, "From: GovDialogue <serveradmin@govdialogue.com>")) {
+                    ?>
+                    
+                    Thanks! You should get an email at <strong><?php echo($_POST['email']); ?></strong> with a confirmation link. Once you verify your email address, you'll be able to post.
 					
 					<?php
 					
