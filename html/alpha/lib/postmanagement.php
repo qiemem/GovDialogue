@@ -15,6 +15,15 @@ function add_post($userid, $title, $content, $tags) {
     return $success;
 }
 
+function update_post_content($postid, $content) {
+    $con = db_connect();
+    $content = mysql_real_escape_string($content);
+    $sql = "UPDATE posts SET content='$content' WHERE id=$postid";
+    $success = mysql_query($sql);
+    db_close($con);
+    return $success;
+}
+
 function get_all_post_ids() {
     $con = db_connect();
     $sql = "SELECT id FROM posts";

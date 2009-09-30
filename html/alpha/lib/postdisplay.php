@@ -8,21 +8,39 @@ function display_post_by_id($postid) {
     $user = get_user($post['user']);
     $name = $user['firstname']." ".$user['lastname'];
     $tags = $post['tags'];
-    display_post($title, $content, $name, $tags);
+    $posttime = $post['posttime'];
+    display_post($title, $content, $name, $tags, $posttime);
+    write_edit_post_form($postid);
 }
 
-function display_post($title, $content, $name, $tags) {
+function display_post($title, $content, $name, $tags, $posttime=null) {
     echo "<div class=\"postTitle\">\n";
     echo "<h2>$title</h2>\n";
     echo "<p class=\"postDescription\">\n";
     echo "$content\n";
     echo "</p>\n";
     echo "<p class=\"postCredits\">Posted by <a href=\"#\">";
-    echo $name."</a></p>\n";
+    echo $name."</a>";
+    if($posttime) {
+        echo " on $posttime";
+    }
+    echo "</p>\n";
     echo "<p class=\"postTags\">Tags: ";
     write_post_tags($tags);
     echo "</p>\n";
     echo "\n</div>\n";
+}
+
+function write_edit_post_form($postid) {
+    $post = get_post($postid);
+    $content = $post['content'];
+    echo "<div id=\"post".$postid."EditForm\">\n";
+    echo "<form name=\"newPostForm\" id=\"newPostForm\" method=\"POST\" action=\"updatepost.php\">\n";
+    echo "<p><textarea name=\"content\" id=\"content\" rows=\"7\" cols=\"70\">$content</textarea></p>\n";    
+    echo "<input name=\"postID\" type=\"hidden\" value=\"$postid\"/>\n";
+    echo "<p><input type=\"submit\" id=\"submitButton\" value=\"Update Post\" name=\"submitted\"/></p>\n";
+    echo "</form>\n";
+    echo "</div>\n";
 }
 
 function write_post_tags($tags) {
