@@ -199,22 +199,3 @@ div.footer div.footerContainer
 	width: 750px;
 }
 
-
-
-/*about.php*/
-div.quotation
-{
-	width: 230px;
-	font-size: 24px;
-	color: #777777;
-	line-height: 30px;
-	float: right;
-	font-family: Georgia, "Times New Roman", Times, serif;
-	font-style: italic;
-	margin: 0 10px 0px 30px;
-	padding: 0;
-}
-
-div.quotation span.emph { color: #333333; }
-
-div.quotation span.obama { float: right; color: #AAAAAA; }
