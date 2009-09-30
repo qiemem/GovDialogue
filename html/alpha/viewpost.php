@@ -19,7 +19,7 @@ if (isset($_GET['postid'])) {
         $show_comments = array();
     }
 
-    display_post($post_id);
+    display_post_by_id($post_id);
     echo "<p class=\"postReplyLink\"><a href=\"javascript:void(0);\" onclick=\"javascript:togglePostReplyVisibility('$post_id');\">Add a new comment</a></p>\n";
     //echo "<p class=\"postReplyCommentForm\">";
     

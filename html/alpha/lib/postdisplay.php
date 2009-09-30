@@ -1,17 +1,17 @@
 <?php
 require_once("postmanagement.php");
 
-function display_post($postid) {
+function display_post_by_id($postid) {
     $post = get_post($postid);
     $title = $post['title'];
     $content = $post['content'];
     $user = get_user($post['user']);
     $name = $user['firstname']." ".$user['lastname'];
     $tags = $post['tags'];
-    display_post_with($title, $content, $name, $tags);
+    display_post($title, $content, $name, $tags);
 }
 
-function display_post_with($title, $content, $name, $tags) {
+function display_post($title, $content, $name, $tags) {
     echo "<div class=\"postTitle\">\n";
     echo "<h2>$title</h2>\n";
     echo "<p class=\"postDescription\">\n";
