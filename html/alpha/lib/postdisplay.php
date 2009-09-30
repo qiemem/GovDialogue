@@ -8,6 +8,10 @@ function display_post($postid) {
     $user = get_user($post['user']);
     $name = $user['firstname']." ".$user['lastname'];
     $tags = $post['tags'];
+    display_post_with($title, $content, $name, $tags);
+}
+
+function display_post_with($title, $content, $name, $tags) {
     echo "<div class=\"postTitle\">\n";
     echo "<h2>$title</h2>\n";
     echo "<p class=\"postDescription\">\n";
