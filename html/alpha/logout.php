@@ -12,7 +12,7 @@ if (isUserLoggedIn()) {
     logout();
 }
 $domain = $_SERVER['HTTP_HOST'];
-header("Location: http://$domain/govit/index.php");
+header("Location: http://$domain/alpha/index.php");
 exit();
 ?>
 

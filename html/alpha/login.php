@@ -31,7 +31,7 @@ if (isset($_SESSION['user'])) {
             if(login($_POST['email'], $_POST['password'])) {
                 $domain = $_SERVER['HTTP_HOST'];
                 echo "Login successful.";
-                header("Location: http://$domain/govit/index.php");
+                header("Location: http://$domain/alpha/index.php");
                 exit();	
             }
             else
