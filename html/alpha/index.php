@@ -11,7 +11,9 @@ printHeader("Title", "Keywords", "Description", "home");
 
 <div class="indexLeft">
     <h2>Welcome</h2>
-    <p class="largeText">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    <p class="largeText">
+    	Oh, hi there ;)
+    </p>
     <div class="clearBoth"></div>
 </div><!-- /.indexLeft -->
 
@@ -37,21 +39,21 @@ if(isUserLoggedIn()){
 
 
 <div class="midbox indexMidBoxOne">
-	<h3><a href="allposts.php">Browse posts</a></h3>
+	<h3 class="one"><a href="allposts.php">Browse posts</a></h3>
     <p>
     	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
     </p>
 </div>
 
 <div class="midbox indexMidBoxTwo">
-	<h3><a href="makenewpost.php">Make a New Post</a></h3>
+	<h3 class="two"><a href="makenewpost.php">Make a New Post</a></h3>
     <p>
     	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
     </p>
 </div>
 
 <div class="midbox indexMidBoxThree">
-	<h3><a href="feedback.php">Send Feedback</a></h3>
+	<h3 class="three"><a href="feedback.php">Send Feedback</a></h3>
     <p>
     	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
     </p>
