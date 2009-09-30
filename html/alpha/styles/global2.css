@@ -17,7 +17,7 @@ body
 div.clearBoth { clear: both; }
 
 a, a:active, a:visited { color: #3287d7; }
-a:hover { color: #0685fd; }
+a:hover { color: #59adfd; }
 
 p
 {
@@ -43,6 +43,14 @@ h2
 	font-size: 30px;
 	padding: 0;
 	margin: 8px 0 24px 0;
+}
+
+h3
+{
+	color: #777777;
+	font-size: 24px;
+	padding: 0;
+	margin: 8px 0 16px 0;
 }
 
 .alphaTag {
@@ -190,3 +198,23 @@ div.footer div.footerContainer
 	padding: 0;
 	width: 750px;
 }
+
+
+
+/*about.php*/
+div.quotation
+{
+	width: 230px;
+	font-size: 24px;
+	color: #777777;
+	line-height: 30px;
+	float: right;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-style: italic;
+	margin: 0 10px 0px 30px;
+	padding: 0;
+}
+
+div.quotation span.emph { color: #333333; }
+
+div.quotation span.obama { float: right; color: #AAAAAA; }

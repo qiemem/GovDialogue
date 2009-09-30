@@ -7,6 +7,11 @@
 	float: left;
 }
 
+.indexLeft h2
+{
+	font-size: 36px;
+}
+
 .indexRight
 {
 	border-left: 1px solid #e3e3e3;
@@ -50,6 +55,8 @@
 	margin: 15px 0 0 0;
 	font-size: 11px;
 }
+
+.midbox p.big { font-size: 12px; }
 
 .indexMidBoxOne
 {

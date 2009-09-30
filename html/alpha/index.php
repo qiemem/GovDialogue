@@ -10,10 +10,9 @@ printHeader("Title", "Keywords", "Description", "home");
 ?>
 
 <div class="indexLeft">
-    <h2>Welcome</h2>
-    <p class="largeText">
-    	Oh, hi there ;)
-    </p>
+    <h2>Welcome to the alpha.</h2>
+    <p class="largeText">This is the prototype of <a href="/alpha/">GovDialogue</a>&mdash;a simple, solid platform for government dialogues.</p>
+    <p class="largeText">GovDialogue helps create conversations between governments and people. Check out <a href="about.php">why and how</a>.
     <div class="clearBoth"></div>
 </div><!-- /.indexLeft -->
 
