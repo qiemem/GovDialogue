@@ -17,7 +17,7 @@ body
 div.clearBoth { clear: both; }
 
 a, a:active, a:visited { color: #3287d7; }
-a:hover { color: #0685fd; }
+a:hover { color: #59adfd; }
 
 p
 {
@@ -43,6 +43,14 @@ h2
 	font-size: 30px;
 	padding: 0;
 	margin: 8px 0 24px 0;
+}
+
+h3
+{
+	color: #777777;
+	font-size: 24px;
+	padding: 0;
+	margin: 8px 0 16px 0;
 }
 
 .alphaTag {
@@ -190,3 +198,4 @@ div.footer div.footerContainer
 	padding: 0;
 	width: 750px;
 }
+

@@ -7,6 +7,11 @@
 	float: left;
 }
 
+.indexLeft h2
+{
+	font-size: 36px;
+}
+
 .indexRight
 {
 	border-left: 1px solid #e3e3e3;
@@ -46,9 +51,9 @@
 
 .midbox p
 {
-	color: #555555;
+	color: #777777;
 	margin: 15px 0 0 0;
-	font-size: 11px;
+	font-size: 14px;
 }
 
 .indexMidBoxOne
@@ -70,3 +75,22 @@
 	float: left;
 	padding: 0 0 0 34px;
 }
+
+div.quotation
+{
+	width: 230px;
+	font-size: 24px;
+	color: #777777;
+	line-height: 30px;
+	float: right;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-style: italic;
+	margin: 0 10px 20px 30px;
+	padding: 0;
+}
+
+div.quotation span.emph { color: #333333; }
+
+div.quotation div.source { text-align: right; color: #AAAAAA; font-size: 18px; }
+
+h3.firsth3 { margin-top: 20px; }
