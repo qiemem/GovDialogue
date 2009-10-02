@@ -4,6 +4,7 @@ ob_start(); // for redirect
 // index.php
 require_once("lib/commentmanagement.php");
 require_once("lib/postmanagement.php");
+require_once("lib/urlmanagement.php");
 require_once("header.php");
 printHeader("Title", "Keywords", "Description");
 
@@ -49,9 +50,10 @@ if (inError()) {
         $postid = $comment['postparent'];
     }
     echo "Post successful!";
-    $domain = $_SERVER['HTTP_HOST'];
-    header("Location: http://$domain/govit/viewpost.php?postid=$postid&commentid=$commentid#$commentid");
-    exit();   
+    //$domain = $_SERVER['HTTP_HOST'];
+    //header("Location: http://$domain/govit/viewpost.php?postid=$postid&commentid=$commentid#$commentid");
+    //exit();   
+    relative_redirect("viewpost?postid=$postid&commentid=$commentid#$commentid");
 }
 
 

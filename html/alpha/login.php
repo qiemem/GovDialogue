@@ -5,6 +5,7 @@
 ob_start();
 
 require_once("lib/sessionmanagement.php");
+require_once("lib/urlmanagement.php");
 require_once("lib/userdisplay.php"); // to display the login box
 
 require_once("header.php");
@@ -31,8 +32,9 @@ if (isset($_SESSION['user'])) {
             if(login($_POST['email'], $_POST['password'])) {
                 $domain = $_SERVER['HTTP_HOST'];
                 echo "Login successful.";
-                header("Location: http://$domain/alpha/index.php");
-                exit();	
+                //header("Location: http://$domain/alpha/index.php");
+                //exit();	
+                relative_redirect("index.php");
             }
             else
                 {

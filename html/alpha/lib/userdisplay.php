@@ -30,7 +30,7 @@ function print_greeting_box($divid) {
     echo("<li>&raquo;&nbsp;&nbsp;<a href=\"#\">View recent posts</a></li>\n");
     echo("<li>&raquo;&nbsp;&nbsp;<a href=\"makenewpost.php\">Make a new post</a></li>\n");
     echo("</ul>\n");
-    echo "<p class=\"bottomText\">(Not $firstname? <a href=\"/govit/logout.php\">Log out.</a>)</p>\n";
+    echo "<p class=\"bottomText\">(Not $firstname? <a href=\"logout.php\">Log out.</a>)</p>\n";
     echo "</div>";
 }
 
